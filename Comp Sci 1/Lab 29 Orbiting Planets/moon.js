@@ -1,6 +1,8 @@
 class Moon{
   constructor(x, y){
     this.loc = createVector(x, y)
+    this.vel = createVector(0, 0);
+    this.por = por;
   }
 
   run(){

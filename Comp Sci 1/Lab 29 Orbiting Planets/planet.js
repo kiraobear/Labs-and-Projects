@@ -1,7 +1,7 @@
 class Planet{//++++++++++++++++++++++++++++++++++++++++++++++++
   constructor(x, y){
-    this.loc = createVector(x, y)
-    this.por = 20
+    this.loc = createVector(x, y, por)
+    this.por = por
     this.angle = 0;
     this.vel = createVector(0, 0);
   }
