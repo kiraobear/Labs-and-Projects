@@ -1,0 +1,46 @@
+
+
+body {
+   background-color: white;
+   margin:0;
+ }
+
+
+canvas {
+    border: solid black 2px;
+    display:block;
+/*    background-color: rgba(0,0,0, .95); */
+}
+
+#wrapperDiv {
+  border: solid black 2px;
+  width: 1300px;
+  height: 804px;
+  margin:auto;
+  margin-top: 30px;;
+  color:black;
+  background-color: #73e6b8;
+}
+
+#buttDiv {
+  border: solid black 2px;
+  width: 292px;
+  height: 800px;
+  margin-left: 0px;
+  color:black;
+  float:left;
+  background-color: #1c635d;
+}
+
+#button {
+  border: solid black 2px;
+  border-radius: 20px;
+  width: 130px;
+  height: 70px;
+  margin:auto;
+  margin-top: 70px;
+  color:black;
+  padding:20px;
+  background-color: #81f5d8;
+}
+
