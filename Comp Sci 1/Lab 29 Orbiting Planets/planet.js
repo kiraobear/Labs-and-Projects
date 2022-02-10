@@ -1,9 +1,10 @@
 class Planet{//++++++++++++++++++++++++++++++++++++++++++++++++
-  constructor(x, y){
-    this.loc = createVector(x, y, por)
-    this.por = por
+  constructor(){
+    this.loc = createVector(0, 0)
     this.angle = 0;
     this.vel = createVector(0, 0);
+    this.or = 100;
+    this.angle = 0;
   }
 
   run(){
@@ -13,10 +14,10 @@ class Planet{//++++++++++++++++++++++++++++++++++++++++++++++++
 
   update(){
     this.loc.add(this.vel);
-    angle = angle + 1
+    this.angle = this.angle + 0.05
 
-    this.loc.x = sun.loc.x + cos(angle)*planetOrbitalRadius
-    this.loc.y = sun.loc.y + sin(angle)*planetOrbitalRadius
+    this.loc.x = sun.loc.x + cos(this.angle)*this.or
+    this.loc.y = sun.loc.y + sin(this.angle)*this.or
 
   }
 
