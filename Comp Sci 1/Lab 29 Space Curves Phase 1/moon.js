@@ -1,8 +1,9 @@
 class Moon{
   constructor(){
-    this.loc = createVector(x, y)
+    this.loc = createVector(0, 0)
     this.vel = createVector(0, 0);
-    this.mor = 0;
+    this.mor = 50;
+    this.angle = 0;
   }
 
   run(){
@@ -13,9 +14,9 @@ class Moon{
   update(){
     this.loc.add(this.vel);
     this.angle = this.angle + 0.05
-    
-    moon.loc.x = planet.loc.x + cos(this.angle)*moonOrbitalRadius
-    moon.loc.y = planet.loc.y + sin(this.angle)*moonOrbitalRadius
+
+    moon.loc.x = planet.loc.x + cos(this.angle)*this.mor
+    moon.loc.y = planet.loc.y + sin(this.angle)*this.mor
   }
 
   render(){

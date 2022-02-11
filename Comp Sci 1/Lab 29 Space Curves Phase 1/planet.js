@@ -14,7 +14,7 @@ class Planet{//++++++++++++++++++++++++++++++++++++++++++++++++
 
   update(){
     this.loc.add(this.vel);
-    this.angle = this.angle + 0.05
+    this.angle = this.angle + 0.009
 
     this.loc.x = sun.loc.x + cos(this.angle)*this.or
     this.loc.y = sun.loc.y + sin(this.angle)*this.or
