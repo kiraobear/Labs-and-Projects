@@ -1,6 +1,6 @@
 class Sun{//+++++++++++++++++++++++++++++++++++++++++++++++++++
   constructor(x, y, rad){
-    this.loc = createVector(x,y)
+    this.loc = createVector(x,y)//sun location
 
   }
 
@@ -16,6 +16,6 @@ class Sun{//+++++++++++++++++++++++++++++++++++++++++++++++++++
   render(){
     noStroke();
     fill(255, 230, 0);
-    ellipse(this.loc.x, this.loc.y, 75);
+    ellipse(this.loc.x, this.loc.y, 75);//draw sun
   }
 }//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

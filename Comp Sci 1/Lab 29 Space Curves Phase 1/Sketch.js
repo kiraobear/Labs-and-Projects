@@ -1,3 +1,5 @@
+//Kira O'Grady
+//Lab 211 Space Curves
 let sun, planet, moon;//declare global variables
 function setup() {
   createCanvas(400, 400);
