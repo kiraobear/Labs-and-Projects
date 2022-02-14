@@ -20,7 +20,7 @@ class Moon{
   }
 
   render(){
-    fill(0, 200, 255)
-    ellipse(this.loc.x, this.loc.y, 10);//draw ellipse
+    //fill(0, 200, 255)
+    //ellipse(this.loc.x, this.loc.y, 10);//draw ellipse
   }
 }//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

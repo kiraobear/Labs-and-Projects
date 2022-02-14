@@ -6,10 +6,10 @@ function setup() {
   sun = new Sun(width/2, height/2)//creating classes
   planet = new Planet();
   moon = new Moon();
+  background(255);
 }
 
 function draw() {
-  background(20);
   sun.run();//run objects
   planet.run();
   moon.run();

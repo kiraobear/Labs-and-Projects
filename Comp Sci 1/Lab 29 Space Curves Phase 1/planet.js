@@ -13,6 +13,7 @@ class Planet{//++++++++++++++++++++++++++++++++++++++++++++++++
   }
 
   update(){
+
     this.loc.add(this.vel);//add velocity to location
     this.angle = this.angle + 0.009
 
@@ -22,7 +23,11 @@ class Planet{//++++++++++++++++++++++++++++++++++++++++++++++++
   }
 
   render(){
-    fill(255, 140, 30);
-    ellipse(this.loc.x, this.loc.y, 20)
+    stroke(0);
+    strokeWeight(0.1);
+    line(this.loc.x, this.loc.y, moon.loc.x, moon.loc.y);
+    //noStroke();
+    //fill(255, 140, 30);
+    //ellipse(this.loc.x, this.loc.y, 20)
   }
 }//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
