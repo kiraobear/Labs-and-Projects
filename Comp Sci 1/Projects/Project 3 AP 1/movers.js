@@ -32,11 +32,6 @@ this.acc.mult(0.09);
   }
   this.loc.add(this.vel);
 
-  if(this.loc.dist(mainMover.loc) < 150){
-     v = 255;
-  } else{
-      v = 0;
-  }
 }
   render(){
     noStroke();
@@ -50,9 +45,14 @@ this.acc.mult(0.09);
     //ellipse(this.loc.x, this.loc.y, this.diam);
 
 
-    stroke(255, 0, v);
-    strokeWeight(3);
-    line(this.loc.x, this.loc.y, mainMover.loc.x, mainMover.loc.y);
+
+    for (let i = 0; i < movers.length; i++){
+      if (this === movers[i]){
+        // segments.push(new Segment(i));
+        segments[i] = new Segment(i);
+
+      }
+    }
 
   }
   checkEdges(){
