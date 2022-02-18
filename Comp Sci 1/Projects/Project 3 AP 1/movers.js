@@ -1,7 +1,7 @@
 class Mover{
   constructor(x,y){
     this.loc = createVector(x,y);
-    this.vel = createVector(random(-2,2));
+    this.vel = createVector(random(-5,5));
     this.acc = createVector(0,0);
     this.diam = 15
     this.clr = color(255);
@@ -10,7 +10,7 @@ class Mover{
     this.update();
     this.render();
     this.checkEdges();
-    //this.checkDistance();
+    this.checkDistance();
   }
   update(){
 let distToMainMover = this.loc.dist(mainMover.loc);
@@ -42,14 +42,14 @@ this.acc.mult(0.09);
       this.clir = color(255);
     }
     fill(this.clr);
-    //ellipse(this.loc.x, this.loc.y, this.diam);
+    ellipse(this.loc.x, this.loc.y, this.diam);
 
 
 
     for (let i = 0; i < movers.length; i++){
       if (this === movers[i]){
         // segments.push(new Segment(i));
-        segments[i] = new Segment(i);
+        //segments[i] = new Segment(i);
 
       }
     }
@@ -69,8 +69,8 @@ this.acc.mult(0.09);
       if(movers[i] !== this){
         let dis = this.loc.dist(movers[i].loc);
         if(dis < 50){
-            stroke(random(255), random(255), random(255));
-            strokeWeight(3)
+            stroke(this.clr);
+            strokeWeight(0.09)
             line(this.loc.x, this.loc.y, movers[i].loc.x, movers[i].loc.y);
         }
       }

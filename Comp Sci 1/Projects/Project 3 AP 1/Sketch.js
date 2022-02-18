@@ -10,7 +10,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   // background(10, 10, 10);
 
-  loadMovers(20);
+  loadMovers(175);
 }
 
 function draw() {
