@@ -26,12 +26,11 @@ this.acc.mult(0.09);
   }
   this.vel.add(this.acc);
   if(this === mainMover){
-    this.vel.limit(1);
+    this.vel.limit(3);
   } else{
     this.vel.limit(3);
   }
   this.loc.add(this.vel);
-
 }
   render(){
     noStroke();
