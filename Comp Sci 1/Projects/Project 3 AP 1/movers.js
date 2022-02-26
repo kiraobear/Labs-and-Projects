@@ -14,6 +14,7 @@ class Mover{
     this.checkDistance();
   }
   update(){
+    sliderval = slider.value();
     distToMainMover = this.loc.dist(mainMover.loc);
   //++++++++++++++++++++++++++
   this.acc = p5.Vector.sub(mainMover.loc, this.loc);
@@ -53,6 +54,11 @@ class Mover{
         if (this === movers[i]){
           // segments.push(new Segment(i));
           //segments[i] = new Segment(i);
+          if(sliderval === 1){
+            this.clr
+          } else if(sliderval === 2){
+
+          }
       }
     }
   }

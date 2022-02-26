@@ -5,13 +5,12 @@ let mainMover,distToMainMover ;
 let segments = [];
 let v;
 let pause = false;
-let slider,val;
+let slider,sliderval;
 function setup() {
   //createCanvas(400, 400);
   createCanvas(windowWidth, windowHeight);
   background(10, 10, 10);
-  //colorMode(HSB);
-  slider = createSlider(0, 360, 60, 40);
+  slider = createSlider(0, 2, 0, 1)
   slider.position(10, 10);
   slider.style('width', '80px');
   let t = random(25, 225);
@@ -30,7 +29,6 @@ function draw() {
       segments[i].run();
     }
   }
-  val = slider.value();
 }
 
 function keyPressed(){
