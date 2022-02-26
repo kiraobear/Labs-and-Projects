@@ -4,7 +4,8 @@ class Mover{
     this.vel = createVector(random(-5,5));
     this.acc = createVector(0,0);
     this.diam = 15
-    this.clr = (0, 0, 255);
+    this.clr = color(0, 0, 254);
+    console.log(this.clr);
   }
   run(){
     this.update();
@@ -26,7 +27,7 @@ class Mover{
     }
     this.vel.add(this.acc);
     if(this === mainMover){
-      this.vel.limit(3);
+      this.vel.limit(1);
     } else{
       this.vel.limit(3);
     }
@@ -39,13 +40,13 @@ class Mover{
     }*/
   }
     render(){
-      noStroke();
+      //noStroke();
       /*if(this === mainMover){
         this.clr = color(10,28,142);
       } else{
         this.clr = color(255);
       }*/
-      fill(this.clr);
+      //fill(this.clr);
       //ellipse(this.loc.x, this.loc.y, this.diam);
 
       for (let i = 0; i < movers.length; i++){
@@ -66,19 +67,19 @@ class Mover{
 
   checkDistance(){
     for(let i = 0; i < movers.length; i++){
-    if(distToMainMover < 100){
-      this.clr = (255, 255, 0);
+    if(distToMainMover < 175){
+      this.clr = color(255, 255, 0);
     } else {
-      this.clr = (0, 0, 255);
+      this.clr = color(0, 0, 255);
     }
   }
     for(let i = 0; i < movers.length; i++){
       if(movers[i] !== this){
         let dis = this.loc.dist(movers[i].loc);
         if(dis < 50){
-            stroke(this.clr);
             let s = random(0.03, 0.1);
             strokeWeight(s)
+            stroke(this.clr);
             line(this.loc.x, this.loc.y, movers[i].loc.x, movers[i].loc.y);
         }
       }

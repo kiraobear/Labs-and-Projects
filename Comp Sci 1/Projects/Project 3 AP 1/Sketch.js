@@ -10,11 +10,12 @@ function setup() {
   //createCanvas(400, 400);
   createCanvas(windowWidth, windowHeight);
   background(10, 10, 10);
-  colorMode(HSB);
+  //colorMode(HSB);
   slider = createSlider(0, 360, 60, 40);
   slider.position(10, 10);
   slider.style('width', '80px');
-  loadMovers(25);
+  let t = random(25, 225);
+  loadMovers(t);
 }
 
 function draw() {
@@ -29,7 +30,7 @@ function draw() {
       segments[i].run();
     }
   }
-  let val = slider.value();
+  val = slider.value();
 }
 
 function keyPressed(){
