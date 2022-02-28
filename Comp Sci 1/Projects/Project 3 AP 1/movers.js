@@ -5,7 +5,6 @@ class Mover{
     this.acc = createVector(0,0);
     this.diam = 15
     this.clr = color(0, 0, 254);
-    console.log(this.clr);
   }
   run(){
     this.update();
@@ -19,7 +18,7 @@ class Mover{
   //++++++++++++++++++++++++++
   this.acc = p5.Vector.sub(mainMover.loc, this.loc);
   this.acc.normalize();
-  this.acc.mult(0.03);
+  this.acc.mult(0.05);//can be replaced with slider val
   //+++++++++++++++++++++++++
   if(distToMainMover < 145){
   this.acc = p5.Vector.sub(this.loc, mainMover.loc);
@@ -33,20 +32,10 @@ class Mover{
       this.vel.limit(3);
     }
     this.loc.add(this.vel);
-  /*let v = random(1);
-    if(v ===0){
-      this.clr = (255, 255, 0);
-    } else {
-      this.clr = (0,0,255);
-    }*/
+
   }
     render(){
       //noStroke();
-      /*if(this === mainMover){
-        this.clr = color(10,28,142);
-      } else{
-        this.clr = color(255);
-      }*/
       //fill(this.clr);
       //ellipse(this.loc.x, this.loc.y, this.diam);
 

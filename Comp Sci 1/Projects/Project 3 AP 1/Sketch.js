@@ -6,11 +6,12 @@ let segments = [];
 let v;
 let pause = false;
 let slider,sliderval;
+let particles = [];
 function setup() {
   //createCanvas(400, 400);
   createCanvas(windowWidth, windowHeight);
   background(10, 10, 10);
-  slider = createSlider(0, 2, 0, 1)
+  slider = createSlider(0, 5, 0, 0.05)
   slider.position(10, 10);
   slider.style('width', '80px');
   let t = random(25, 225);
@@ -18,8 +19,14 @@ function setup() {
 }
 
 function draw() {
+  for(let i = 0; i < 100; i++){
+    let c = random(width);
+    let d = random(height);
+    particles[i] = new Particle(c, d);
+  }
+  particles.run
   if (!pause){
-  //  background(10, 10, 10, 10);
+//    background(10, 10, 10, 10);
     mainMover.run();
     for(let i = 0; i < movers.length; i++){
       movers[i].run();
