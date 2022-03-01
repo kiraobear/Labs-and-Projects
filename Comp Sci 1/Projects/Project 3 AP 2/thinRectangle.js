@@ -13,6 +13,6 @@ class ThinRectangle{
   }
 
   render(){
-    line();
+    line(width/2);
   }
 }
