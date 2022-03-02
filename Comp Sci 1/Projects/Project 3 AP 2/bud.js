@@ -15,5 +15,6 @@ class Bud{
 
   render(){
     ellipse(this.loc.x, this.loc.y, 50);
+    rect(this.loc.x, this.loc.y, 50, 50); 
   }
 }

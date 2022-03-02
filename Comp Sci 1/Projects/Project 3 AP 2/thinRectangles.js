@@ -1,8 +1,7 @@
-class ThinRectangle{
+class ThinRectangles{
   constructor(){
-    this.loc = createVector(width/2, 0);
-    this.loc2 = createVector(width/2, height);
-
+    this.loc = createVector(width/2, random(height));
+    this.loc2 = createVector(random(width), random(height));
   }
 
   render(){
