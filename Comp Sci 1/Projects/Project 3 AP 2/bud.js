@@ -1,20 +1,17 @@
 class Bud{
   constructor(x, y){
     this.loc = createVector(x, y);
-    this.clr = (random(0, 255), random(0, 255), random(0, 255));
-  }
-
-  run(){
-    this.update();
-    this.render();
-  }
-
-  update(){
-
+    this.clr = color(random(255), random(255), random(255));
+    this.squareyes = floor(random(2));
   }
 
   render(){
-    ellipse(this.loc.x, this.loc.y, 50);
-    rect(this.loc.x, this.loc.y, 50, 50); 
+    rectMode(CENTER);
+    fill(this.clr)
+    if(this.squareyes === 1){
+      ellipse(this.loc.x, this.loc.y, 50);
+    } else if(this.squareyes === 0){
+      rect(this.loc.x, this.loc.y, 50,);
+    }
   }
 }
