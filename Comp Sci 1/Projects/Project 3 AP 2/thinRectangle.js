@@ -6,7 +6,7 @@ class ThinRectangle{
   }
 
   render(){
-    stroke(255, 0, 0);
+    stroke(255, 0, 0, 100);
     strokeWeight(6);
     line(this.loc.x, this.loc.y, this.loc2.x, this.loc2.y);
   }
