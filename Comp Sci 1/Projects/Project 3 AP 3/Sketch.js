@@ -15,7 +15,6 @@ function draw() {
     roots[i].run();
   }
   checkRoots();
-  branchOut();
 }
 
 // function mouseMoved() {
@@ -30,14 +29,6 @@ function checkRoots(){
   for(let i = roots.length - 1; i >= 0; i--) {
     if(roots[i].isDead) {
       roots.splice(i, 1);
-    }
-  }
-}
-
-function branchOut(){
-  for(let i = roots.length - 1; i >= 0; i--){
-    if(roots[i].value === 2){
-       roots.push(new Root(roots[i].loc.x, roots[i].loc.y, 25));
     }
   }
 }

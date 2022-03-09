@@ -4,17 +4,17 @@ constructor(x, y) {
     this.vel = createVector(random (-3,3), random(-3, 3));
     this.acc = createVector(0,0);
     this.diam = 60;
-    this.lifespan = 900;
+    this.counter = 30;
     this.isDead = false;
-    this.value = ceil(random(100));
+    this.value = floor(random(2));
   }
   run(){
     this.render();
     this.update();
+    this.branchOut();
   }
   update() {
-    this.lifespan --;
-    if (this.lifespan < 0 || this.diam < 0) {
+    if (this.diam < 0) {
       this.isDead = true;
     }
     if( this.diam === 20){
@@ -26,6 +26,20 @@ constructor(x, y) {
     this.vel.add(this.acc);
     this.vel.limit(3);
     this.loc.add(this.vel);
+  }
+
+  branchOut(){
+    this.counter--;
+    if(this.counter <= 0){
+      this.value = floor(random(2));
+      this.counter = 30;
+    }
+    strokeWeight(3);
+    stroke(255, 0, 0);
+    if(roots[0].diam < 40 && this.value === 1){
+      point(this.loc.x, this.loc.y);
+      //roots.push(new Root(roots[0].loc.x, roots[0].loc.y));
+    }
   }
   render(){
     strokeWeight(0.3);
