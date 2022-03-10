@@ -6,11 +6,13 @@ function setup() {
   background(0);
   brush = new Brush(width / 2, height / 2);
   roots = [];
-  roots[0] = new Root(width/2, height-height/9);
+  for(let i = 0; i < 45; i++){
+    roots[i] = new Root(random(width), 800);
+  }
 }
 
 function draw() {
-  brush.run();
+  //brush.run();
   for(let i = 0; i < roots.length; i++){
     roots[i].run();
   }

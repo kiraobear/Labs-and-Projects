@@ -37,11 +37,14 @@ constructor(x, y) {
     strokeWeight(3);
     stroke(255, 0, 0);
     if(roots[0].diam < 40 && this.value === 1){
-      point(this.loc.x, this.loc.y);
+      //point(this.loc.x, this.loc.y);
       //roots.push(new Root(roots[0].loc.x, roots[0].loc.y));
     }
   }
   render(){
+    noFill();
+    stroke(255, 255, 255, 15);
+    ellipse(this.loc.x, this.loc.y, this.diam+20)
     strokeWeight(0.3);
     stroke(255)
     noFill();
