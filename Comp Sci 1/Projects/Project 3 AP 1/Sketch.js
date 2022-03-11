@@ -14,7 +14,7 @@ function setup() {
   slider = createSlider(0, 5, 0, 0.05)
   slider.position(10, 10);
   slider.style('width', '80px');
-  let t = random(25, 225);
+  let t = random(25, 175);
   loadMovers(t);
 }
 
