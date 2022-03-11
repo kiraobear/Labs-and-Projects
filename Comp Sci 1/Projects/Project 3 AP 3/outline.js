@@ -1,6 +1,6 @@
 class Outline{
   constructor(){
-    this.loc = createVector(roots[].loc.x, roots[].loc.y)
+    this.loc = createVector(roots[i].loc.x, roots[i].loc.y)
     this.diam = roots[i].diam
   }
 

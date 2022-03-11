@@ -43,10 +43,14 @@ constructor(x, y) {
   }
   render(){
     noFill();
-    stroke(255, 255, 255, 15);
+    if(this.loc.y < random(400, 700)){
+      stroke(247, 156, 10, 15);
+    } else{
+      stroke(242, 80, 31, 15);
+    }
     ellipse(this.loc.x, this.loc.y, this.diam+20)
     strokeWeight(0.3);
-    stroke(255)
+    stroke(255);
     noFill();
     ellipse(this.loc.x, this.loc.y, this.diam, this.diam);
     }
