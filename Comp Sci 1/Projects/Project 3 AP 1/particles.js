@@ -1,4 +1,4 @@
-class Particle{
+class Particle{//not being used but is supposed to create random ellipses
   constructor(x, y){
     this.loc = createVector(x, y);
   }
@@ -8,7 +8,7 @@ class Particle{
   }
 
   render(){
-    noFill();
+    noFill();//create the circles
     ellipse(this.loc.x, this.loc.y, 1);
   }
 }

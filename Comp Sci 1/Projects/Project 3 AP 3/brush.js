@@ -1,4 +1,4 @@
-class Brush {
+class Brush {//brush but not being used
   constructor(x, y) {
     this.loc = createVector(x, y);
     this.diam = 10;
