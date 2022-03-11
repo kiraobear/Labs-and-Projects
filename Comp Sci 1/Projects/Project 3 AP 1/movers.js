@@ -62,7 +62,7 @@ class Mover{
 
   checkDistance(){
     for(let i = 0; i < movers.length; i++){
-    if(distToMainMover < 175){
+    if(distToMainMover < 150){
       this.clr = color(255, 255, 0);
     } else {
       this.clr = color(0, 0, 255);
