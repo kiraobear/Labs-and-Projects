@@ -8,6 +8,6 @@ class ThinRectangles{//the lines that branch out
   render(){
     stroke(255, 0, 0, 100);
     strokeWeight(6);
-    line(this.loc.x, this.loc.y, this.loc2.x, this.loc2.y//draw a line at this loc
+    line(this.loc.x, this.loc.y, this.loc2.x, this.loc2.y)//draw a line at this loc
   }
 }
