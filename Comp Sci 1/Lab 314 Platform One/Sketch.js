@@ -4,7 +4,7 @@ let platform, hero;
 function setup() {
   createCanvas(400, 400);
   platform = new Platform(30, 300);
-  hero = new Hero(random(width), 400);
+  hero = new Hero(random(width), 400, createVector(0,0));
 }
 
 function draw() {
@@ -14,9 +14,11 @@ function draw() {
 }
 
 function keyPressed(){
-  if(keyCode === LEFT_ARROW){
-    hero.vel.x= -1
-  }else if (keyCode === RIGHT_ARROW) {
+  if(keyCode == LEFT_ARROW){
+    console.log("left");
+    hero.vel = createVector(-1, 0);
+  }else if (keyCode == RIGHT_ARROW) {
+    hero.vel = createVector(1, 0);
     console.log("right");
   }
 }

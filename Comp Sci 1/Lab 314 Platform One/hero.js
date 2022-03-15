@@ -1,7 +1,7 @@
 class Hero{
-  constructor(x, y){
+  constructor(x, y, vel){
     this.loc = createVector(x, y);
-    this.vel = createVector(0, 0);
+    this.vel = vel
     this.acc = createVector(0, 0);
   }
 
@@ -14,7 +14,7 @@ class Hero{
     this.vel.add(this.loc);
     this.acc.add(this.vel);
 
-    
+
   }
 
   render(){
