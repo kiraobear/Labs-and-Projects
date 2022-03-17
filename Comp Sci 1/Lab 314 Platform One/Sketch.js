@@ -18,14 +18,14 @@ function draw() {
 function keyPressed(){
   if(keyCode == LEFT_ARROW){
     console.log("left");
-    hero.count = 60;
+    hero.count = 30;
     hero.vel = createVector(-1, 0);
   }else if (keyCode == RIGHT_ARROW) {
-    hero.count = 60;
+    hero.count = 30;
     hero.vel = createVector(1, 0);
     console.log("right");
   }else if (keyCode == UP_ARROW) {
-    hero.count = 60;
+    hero.count = 30;
     hero.vel = createVector(0, -2);
     console.log("up");
   }
