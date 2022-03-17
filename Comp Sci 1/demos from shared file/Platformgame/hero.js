@@ -11,7 +11,7 @@ class Hero {
     this.checkEdges();
     this.isColliding();
     this.render();
-    this.jump
+    this.move();
   }
 
   render() {
@@ -51,8 +51,8 @@ class Hero {
     this.vel.limit(10);
   }
 
-  jump() {
-
+  move() {
+    if(keyIsDown())
   }
 
   isColliding() {
