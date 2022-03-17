@@ -3,6 +3,7 @@ class Game {
       this.platform1;
       this.platform2;
       this.hero;
+      this.initGame();
     }
 
     initGame() {
@@ -17,10 +18,14 @@ class Game {
     }
 
     updateGame() {
-
+      this.hero.run();
+      this.platform1.run();
+      this.platform2.run();
     }
 
     renderGame() {
-
+      this.hero.render();
+      this.platform1.render();
+      this.platform2.render();
     }
 }

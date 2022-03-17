@@ -1,19 +1,19 @@
-class Platform {
-  constructor() {
-    
+class Platform{
+  constructor(x, y){
+    this.loc = createVector(x, y);
   }
 
-  run() {
+  run(){
     this.update();
-    this.render();
+    //this.render();
   }
 
   update(){
 
   }
 
-  render() {
-   
+  render(){
+    fill(255, 0, 255);
+    rect(this.loc.x, this.loc.y, 100, 20)
   }
-
 }

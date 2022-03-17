@@ -20,17 +20,7 @@ function draw() {
 //+++++++++++++++++++++++++++++++++++++++  callbacks
 
 function keyPressed(){
-  if(keyCode == LEFT_ARROW){
-    console.log("left");
-    game.hero.count = 30;
-    game.hero.vel = createVector(-1, 0);
-  }else if (keyCode == RIGHT_ARROW) {
-    game.hero.count = 30;
-    game.hero.vel = createVector(1, 0);
-    console.log("right");
-  }else if (keyCode == UP_ARROW) {
-    game.hero.count = 30;
-    game.hero.vel = createVector(0, -2);
-    console.log("up");
+  if(keyIsDown(UP_ARROW)){
+    game.hero.vel.y = -2;
   }
 }
