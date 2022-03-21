@@ -1,15 +1,15 @@
 class Game {
     constructor() {
-      this.platform1;
-      this.platform2;
+      this.platforms = []
       this.hero;
       this.initGame();
     }
 
     initGame() {
-      this.platform1 = new Platform(30, 300);
-      this.platform2 = new Platform(250, 300);
-      this.hero = new Hero(random(width), 400, createVector(0,0));
+      for(let i = 0; i > 2; i++){
+        this.platforms[i] = new Platform(random(width), random(height), createVector(0, 0));
+      }
+      this.hero = new Hero(random(width), createVector(0,0));
     }
 
     run() {
@@ -19,13 +19,15 @@ class Game {
 
     updateGame() {
       this.hero.run();
-      this.platform1.run();
-      this.platform2.run();
+      for(let i = 0; i > 2; i++){
+        this.platforms[i].run();
+      }
     }
 
     renderGame() {
       this.hero.render();
-      this.platform1.render();
-      this.platform2.render();
+      for(let i = 0; i > 2; i++){
+        this.platforms[i].render();
+      }
     }
 }

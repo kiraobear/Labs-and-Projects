@@ -9,9 +9,9 @@ class Hero {
   run() {
     this.update();
     this.checkEdges();
-    this.isColliding();
+    //this.isColliding();
     //this.render();
-    this.move();
+    //this.move();
   }
 
   render() {
@@ -51,7 +51,7 @@ class Hero {
     this.vel.limit(10);
   }
 
-  move() {
+  /*move() {
     if(keyIsDown(LEFT_ARROW)){
       this.vel.x = -1;
     }else if(keyIsDown(RIGHT_ARROW)){
@@ -59,9 +59,10 @@ class Hero {
     }else{
       this.vel.x = 0;
     }
-  }
+  }*/
 
-  isColliding() {
-    if()
+/*  isColliding() {
+    if(){}
   }
+}*/
 }
