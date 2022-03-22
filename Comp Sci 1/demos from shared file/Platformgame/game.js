@@ -6,10 +6,10 @@ class Game {
     }
 
     initGame() {
-      for(let i = 0; i > 2; i++){
-        this.platforms[i] = new Platform(random(width), random(height), createVector(0, 0));
+      for(let i = 0; i < 20; i++){
+        this.platforms[i] = new Platform(random(width), random(height));
       }
-      this.hero = new Hero(random(width), createVector(0,0));
+      this.hero = new Hero(random(width),random(height), createVector(0,0));
     }
 
     run() {
@@ -19,14 +19,14 @@ class Game {
 
     updateGame() {
       this.hero.run();
-      for(let i = 0; i > 2; i++){
+      for(let i = 0; i < 20; i++){
         this.platforms[i].run();
       }
     }
 
     renderGame() {
       this.hero.render();
-      for(let i = 0; i > 2; i++){
+      for(let i = 0; i < 20; i++){
         this.platforms[i].render();
       }
     }

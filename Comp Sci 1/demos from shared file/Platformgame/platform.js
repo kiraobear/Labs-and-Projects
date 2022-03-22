@@ -1,20 +1,17 @@
 class Platform{
-  constructor(x, y, vel){
+  constructor(x, y){
     this.loc = createVector(x, y);
-    this.vel = vel;
+    this.vel = createVector(0, 0);
   }
 
   run(){
     this.update();
     //this.render();
-    this.move();
   }
 
   update(){
     this.loc.add(this.vel);
-  }
 
-  move() {
     if(keyIsDown(LEFT_ARROW)){
       this.vel.x = -1;
     }else if(keyIsDown(RIGHT_ARROW)){

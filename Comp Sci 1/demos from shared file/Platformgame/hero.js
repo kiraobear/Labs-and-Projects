@@ -9,7 +9,7 @@ class Hero {
   run() {
     this.update();
     this.checkEdges();
-    //this.isColliding();
+    this.isColliding();
     //this.render();
     //this.move();
   }
@@ -61,8 +61,13 @@ class Hero {
     }
   }*/
 
-/*  isColliding() {
-    if(){}
+  isColliding() {
+    for(let i = 0; i < 20; i++){
+      if(this.loc.y > game.platforms[i].loc.y
+        && this.loc.y < game.platforms[i].loc.y + 20
+        && this.loc.x > game.platforms[i].loc.x
+        && this.loc.x < game.platforms[i].loc.x){}
+    }
   }
-}*/
+}
 }
