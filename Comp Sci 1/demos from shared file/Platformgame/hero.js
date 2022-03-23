@@ -4,12 +4,14 @@ class Hero {
     this.vel = vel
     this.acc = createVector(0, 0.05);
     this.count = 30;
+    this.isColliding = false;
+    this.h = width+20
   }
 
   run() {
     this.update();
     this.checkEdges();
-    this.isColliding();
+    this.isColliding = this.collisions();
     //this.render();
     //this.move();
   }
@@ -47,7 +49,10 @@ class Hero {
     // }
 
     //this.vel.x*=(0.99); //(meant for friction-like stopping)
-
+    if(this.isColliding == true){
+      console.log("hi");
+      this.vel.y = 0;
+    }
     this.vel.limit(10);
   }
 
@@ -61,13 +66,15 @@ class Hero {
     }
   }*/
 
-  isColliding() {
+  collisions() {
     for(let i = 0; i < 20; i++){
       if(this.loc.y > game.platforms[i].loc.y
         && this.loc.y < game.platforms[i].loc.y + 20
         && this.loc.x > game.platforms[i].loc.x
-        && this.loc.x < game.platforms[i].loc.x){}
+        && this.loc.x < game.platforms[i].loc.x+100){
+          return true;
+        }
     }
+    return false;
   }
-}
 }

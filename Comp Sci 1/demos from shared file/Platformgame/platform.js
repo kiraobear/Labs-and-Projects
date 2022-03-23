@@ -19,6 +19,11 @@ class Platform{
     }else{
       this.vel.x = 0;
     }
+
+    if(this.loc.x+100 < 0){
+      this.loc.x = random(width)
+      this.loc.y = random(height)
+    }
   }
 
   render(){
