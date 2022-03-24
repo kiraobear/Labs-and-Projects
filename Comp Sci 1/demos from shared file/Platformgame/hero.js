@@ -3,9 +3,10 @@ class Hero {
     this.loc = createVector(x, y);
     this.vel = vel
     this.acc = createVector(0, 0.05);
-    this.count = 30;
+    this.count = 0;
     this.isColliding = false;
     this.h = width+20
+    this.pLevel;
   }
 
   run() {
@@ -38,22 +39,20 @@ class Hero {
 
 
   update(){
-    this.loc.add(this.vel);
     this.vel.add(this.acc);
-
+    this.loc.add(this.vel);
     //this.count--
-
     // if(this.count == 0){
     //   console.log("stop");
     //   this.vel.x = 0;
     // }
-
     //this.vel.x*=(0.99); //(meant for friction-like stopping)
-    if(this.isColliding == true){
-      console.log("hi");
+    if(this.isColliding === true){
       this.vel.y = 0;
+      this.acc.y = 0;
+      this.loc.y = this.pLevel - 15;
     }
-    this.vel.limit(10);
+    this.vel.limit(5);
   }
 
   /*move() {
@@ -68,11 +67,13 @@ class Hero {
 
   collisions() {
     for(let i = 0; i < 20; i++){
-      if(this.loc.y > game.platforms[i].loc.y
-        && this.loc.y < game.platforms[i].loc.y + 20
-        && this.loc.x > game.platforms[i].loc.x
-        && this.loc.x < game.platforms[i].loc.x+100){
+      if(this.loc.y+15 > game.platforms[i].loc.y
+        && this.loc.y+15 < game.platforms[i].loc.y + 20
+        && this.loc.x+15 > game.platforms[i].loc.x
+        && this.loc.x+15 < game.platforms[i].loc.x+100){
+          this.pLevel = game.platforms[i].loc.y;
           return true;
+          this.count = 25;
         }
     }
     return false;
