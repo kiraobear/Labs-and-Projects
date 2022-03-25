@@ -15,7 +15,7 @@ class Platform{
     if(keyIsDown(LEFT_ARROW)){
       this.vel.x = 1;
     }else if(keyIsDown(RIGHT_ARROW)){
-      this.vel.x = -1;
+      this.vel.x = -1.5;
     }else{
       this.vel.x = 0;
     }
