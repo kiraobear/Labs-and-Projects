@@ -4,10 +4,16 @@
 
 //  globals
 let game;
+let imgs = [];
+function preload(){
+  imgs[0] = loadImage('img0.png');
+  imgs[1] = loadImage('img1.png');
+  imgs[2] = loadImage('img2.png');
+}
 
 function setup() {
   //  cset up canvas size and color
-  var cnv = createCanvas(800, 600);
+  var cnv = createCanvas(900, 700);
   cnv.position((windowWidth - width) / 2, 10);
   game = new Game();
 }

@@ -1,9 +1,10 @@
 class Game {
     constructor() {
       this.platforms = []
-      this.collectables = []
+      //this.collectables = []
       this.hero;
       this.initGame();
+      this.parallax;
     }
 
     initGame() {
@@ -11,10 +12,11 @@ class Game {
         this.platforms[i] = new Platform(random(width), random(height));
       }
 
-      for(let k = 0; k < 10; k++){
-        this.collectables[k] = new Collectable(random(width), random(height));
-      }
+      //for(let k = 0; k < 10; k++){
+      //  this.collectables[k] = new Collectable(random(width), random(height));
+      //}
       this.hero = new Hero(100,random(height), createVector(0,0));
+      this.parallax = new Parallax(0, 0, imgs);
     }
 
     run() {
@@ -23,9 +25,9 @@ class Game {
     }
 
     updateGame() {
-      for(let k = 0; k < 10; k++){
-        this.collectables[k].run();
-      }
+    //  for(let k = 0; k < 10; k++){
+    //    this.collectables[k].run();
+      //}
       this.hero.run();
       for(let i = 0; i < 20; i++){
         this.platforms[i].run();
@@ -33,12 +35,14 @@ class Game {
     }
 
     renderGame() {
-      for(let k = 0; k < 10; k++){
-        this.collectables[k].render();
-      }
+    //  for(let k = 0; k < 10; k++){
+    //    this.collectables[k].render();
+    //  }
       this.hero.render();
       for(let i = 0; i < 20; i++){
         this.platforms[i].render();
       }
+
+      this.parallax.render();
     }
 }
