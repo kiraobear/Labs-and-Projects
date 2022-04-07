@@ -13,9 +13,9 @@ class Platform{
     this.loc.add(this.vel);
 
     if(keyIsDown(LEFT_ARROW)){
-      this.vel.x = 1;
+      this.vel.x = 2;
     }else if(keyIsDown(RIGHT_ARROW)){
-      this.vel.x = -1.5;
+      this.vel.x = -2;
     }else{
       this.vel.x = 0;
     }

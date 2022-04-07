@@ -11,11 +11,28 @@ class Parallax{
   }
 
   update(){
+    if(keyIsDown(LEFT_ARROW)){
+      this.vel.x = 2;
+    }else if(keyIsDown(RIGHT_ARROW)){
+      this.vel.x = -2;
+    }else{
+      this.vel.x = 0;
+    }
     //+++++++++++++++++++++++++++++++
     this.loc.add(this.vel);
   }
 
   render(){
-    image(this.imgs[0], this.loc.x, this.loc.y, 900, 700);
+    image(this.imgs[0], this.loc.x, this.loc.y);
+    image(this.imgs[1], this.loc.x, this.loc.y+300);
+    image(this.imgs[2], this.loc.x, this.loc.y+500);
+
+    image(this.imgs[0], this.loc.x-this.imgs[0].width, this.loc.y);
+    image(this.imgs[1], this.loc.x-this.imgs[1].width, this.loc.y+300);
+    image(this.imgs[2], this.loc.x-this.imgs[2].width, this.loc.y+500);
+
+    image(this.imgs[0], this.loc.x+this.imgs[0].width, this.loc.y);
+    image(this.imgs[1], this.loc.x+this.imgs[1].width, this.loc.y+300);
+    image(this.imgs[2], this.loc.x+this.imgs[2].width, this.loc.y+500);
   }
 }

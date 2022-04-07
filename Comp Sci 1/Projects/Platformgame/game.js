@@ -25,6 +25,7 @@ class Game {
     }
 
     updateGame() {
+      this.parallax.run();
     //  for(let k = 0; k < 10; k++){
     //    this.collectables[k].run();
       //}
@@ -35,6 +36,7 @@ class Game {
     }
 
     renderGame() {
+      this.parallax.render();
     //  for(let k = 0; k < 10; k++){
     //    this.collectables[k].render();
     //  }
@@ -43,6 +45,5 @@ class Game {
         this.platforms[i].render();
       }
 
-      this.parallax.render();
     }
 }
