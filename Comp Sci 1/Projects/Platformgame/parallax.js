@@ -1,8 +1,18 @@
 class Parallax{
-  constructor(x, y, imgs){
-    this.loc = createVector(x, y);
-    this.vel = createVector(0, 0);
+  constructor(imgs){
     this.imgs = imgs;
+    this.loc0a = createVector(0, 0);
+    /*this.loc0b = createVector(0, 0);
+
+    this.loc0a = createVector(0, 0);
+    this.loc0b = createVector(0, 0);
+
+    this.loc0a = createVector(0, 0);
+    this.loc0b = createVector(0, 0);
+
+    this.loc0a = createVector(0, 0);
+    this.loc0b = createVector(0, 0);*/
+    this.vel = createVector(0, 0);
   }
 
   run(){
@@ -19,27 +29,17 @@ class Parallax{
       this.vel.x = 0;
     }
     //+++++++++++++++++++++++++++++++
-    this.loc.add(this.vel);
+    this.loc0a.add(this.vel);
+    //+++++++++++++++++++++++++++++++
+    /*if(this.loc0a.x+900 < 0){
+      this.loc0a.x = this.loc0a.x+this.imgs[0].width
+    }
+    if(this.loc0a.x+900>width){
+      this.loc0a.x = this.loc0a.x-this.imgs[1].width
+    }*/
   }
 
   render(){
-    image(this.imgs[0], this.loc.x, this.loc.y);
-    image(this.imgs[1], this.loc.x, this.loc.y+300);
-    image(this.imgs[2], this.loc.x, this.loc.y+500);
-
-    image(this.imgs[0], this.loc.x-this.imgs[0].width, this.loc.y);
-    image(this.imgs[1], this.loc.x-this.imgs[1].width, this.loc.y+300);
-    image(this.imgs[2], this.loc.x-this.imgs[2].width, this.loc.y+500);
-
-    image(this.imgs[0], this.loc.x+this.imgs[0].width, this.loc.y);
-    image(this.imgs[1], this.loc.x+this.imgs[1].width, this.loc.y+300);
-    image(this.imgs[2], this.loc.x+this.imgs[2].width, this.loc.y+500);
-
-    if(this.loc.x+900 < 0){
-      this.loc.x = this.loc.x+this.imgs[0].width
-    }
-    if(this.loc.x+900>width){
-      this.loc.x = this.loc.x-this.imgs[1].width
-    }
+    image(this.imgs[0], this.loc0a.x, this.loc0a.y);
   }
 }
