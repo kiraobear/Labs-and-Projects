@@ -51,6 +51,8 @@ class Hero {
       this.vel.y = 0;
       this.acc.y = 0;
       this.loc.y = this.pLevel - 15;
+    } else{
+      this.acc.y = 0.1;
     }
     this.vel.limit(5);
   }

@@ -24,6 +24,10 @@ class Platform{
       this.loc.x = width+random(15)
       this.loc.y = random(height);
     }
+    if(this.loc.x+100 > width){
+      this.loc.x = -random(20)
+      this.loc.y = random(height)
+    }
   }
 
   render(){

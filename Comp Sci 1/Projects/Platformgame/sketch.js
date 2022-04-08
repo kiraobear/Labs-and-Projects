@@ -28,6 +28,6 @@ function draw() {
 function keyPressed(){
   if(keyIsDown(UP_ARROW)){
     game.hero.vel.y = -3;
-    game.hero.acc.y = 0.09;
+    game.hero.acc.y = 0.1;
   }
 }
