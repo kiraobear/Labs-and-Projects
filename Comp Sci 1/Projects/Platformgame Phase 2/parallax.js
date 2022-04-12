@@ -5,13 +5,13 @@ class Parallax{
     this.loc0b = createVector(this.loc0a.x+this.imgs[0].width, this.loc0a.y);
 
     this.loc1a = createVector(0, 0);
-    this.loc1b = createVector(0, height-this.imgs[1].height);
+    //this.loc1b = createVector(0, height-369);
 
-    this.loc2a = createVector(0, 0);
-    this.loc2b = createVector(0, 0);
+    this.loc2a = createVector(0, height-this.imgs[2].height);
+    this.loc2b = createVector(0, height-this.imgs[2].height);
 
-    this.loc3a = createVector(0, 0);
-    this.loc3b = createVector(0, 0);
+    this.loc3a = createVector(0, height-this.imgs[3].height);
+    this.loc3b = createVector(0, height-this.imgs[3].height);
     //++++++++++++++++++++++++++++++++
     this.vel0a = createVector(0, 0);
     this.vel0b = createVector(0, 0);
@@ -49,6 +49,7 @@ class Parallax{
     image(this.imgs[0], this.loc0a.x, this.loc0a.y);
     image(this.imgs[0], this.loc0b.x, this.loc0b.y);
 
-    image
+    image(this.imgs[1], this.loc1a.x, this.loc1a.y);
+    //image(this.imgs[1], this.loc1b.x, this.loc1b.y);
   }
 }
