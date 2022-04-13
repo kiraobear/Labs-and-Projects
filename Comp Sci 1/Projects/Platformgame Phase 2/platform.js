@@ -29,7 +29,7 @@ class Platform{
 
   render(){
     noStroke();
-    fill(255, 0, 255);
+    fill(255);
     rect(this.loc.x, this.loc.y, 100, 20)
   }
 }
