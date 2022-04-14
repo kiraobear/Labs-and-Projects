@@ -21,7 +21,7 @@ class Platform{
     }
 
     if(this.loc.x+100 < 0){
-      this.loc.x = (width)+random(15)
+      this.loc.x = (width)//+random(5)
       this.loc.y = random(height);
     }
 

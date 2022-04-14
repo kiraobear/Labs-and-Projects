@@ -63,7 +63,7 @@ class Hero {
       if (this.loc.y + 15 > game.platforms[i].loc.y
         && this.loc.y + 15 < game.platforms[i].loc.y + 20
         && this.loc.x + 15 > game.platforms[i].loc.x
-        && this.loc.x + 15 < game.platforms[i].loc.x + 100) {
+        && this.loc.x + 15 < game.platforms[i].loc.x + 115) {
         this.pLevel = game.platforms[i].loc.y;
         return true;
         this.count = 25;
