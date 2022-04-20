@@ -4,11 +4,14 @@
 
 //  globals
 let game;
-let imgs = [];
+let bgImgs = [];
 function preload(){
-  imgs[0] = loadImage('img0.png');
-  imgs[1] = loadImage('img1.png');
-  imgs[2] = loadImage('img2.png');
+  for(let i = 0; i < 5; i++){
+    bgImgs[i] = loadImage("backgrounds/b" + i + ".png");
+  }
+  //imgs[0] = loadImage('img0.png');
+  //imgs[1] = loadImage('img1.png');
+  //imgs[2] = loadImage('img2.png');
 }
 
 function setup() {

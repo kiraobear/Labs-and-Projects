@@ -16,7 +16,7 @@ class Game {
       //  this.collectables[k] = new Collectable(random(width), random(height));
       //}
       this.hero = new Hero(100,random(height), createVector(0,0));
-      this.parallax = new Parallax(imgs);
+      this.parallax = new Parallax(bgImgs);
     }
 
     run() {
