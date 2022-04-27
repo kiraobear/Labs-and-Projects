@@ -7,19 +7,22 @@ class Hero {
     this.isColliding = false;
     this.h = width + 20
     this.pLevel;
+    this.hCount = 0;
   }
 
   run() {
     this.update();
     this.checkEdges();
     this.isColliding = this.collisions();
-    //this.render();
-    //this.move();
   }
 
   render() {
     fill(79, 177, 199);
-    ellipse(this.loc.x, this.loc.y, 30);
+    //ellipse(this.loc.x, this.loc.y, 30);
+    image(hImgs[this.count++], this.loc.x, this.loc.y);
+    if(++this.count >=5){
+      this.count = 0;
+    }
   }
 
   checkEdges() {
@@ -41,12 +44,6 @@ class Hero {
   update() {
     this.vel.add(this.acc);
     this.loc.add(this.vel);
-    //this.count--
-    // if(this.count == 0){
-    //   console.log("stop");
-    //   this.vel.x = 0;
-    // }
-    //this.vel.x*=(0.99); //(meant for friction-like stopping)
     if (this.isColliding === true) {
       this.vel.y = 0;
       this.acc.y = 0;
@@ -60,10 +57,10 @@ class Hero {
 
   collisions() {
     for (let i = 0; i < 20; i++) {
-      if (this.loc.y + 15 > game.platforms[i].loc.y
-        && this.loc.y + 15 < game.platforms[i].loc.y + 20
-        && this.loc.x + 15 > game.platforms[i].loc.x
-        && this.loc.x + 15 < game.platforms[i].loc.x + 115) {
+      if (this.loc.y + 52 > game.platforms[i].loc.y
+        && this.loc.y + 52 < game.platforms[i].loc.y + 20
+        && this.loc.x + 30 > game.platforms[i].loc.x
+        && this.loc.x + 30 < game.platforms[i].loc.x + 115) {
         this.pLevel = game.platforms[i].loc.y;
         return true;
         this.count = 25;

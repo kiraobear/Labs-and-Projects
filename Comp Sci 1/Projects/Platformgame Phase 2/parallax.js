@@ -19,124 +19,98 @@ class Parallax{
 
     //++++++++++++++++++++++++++++++++
     this.vel0a = createVector(0, 0);
-    this.vel0b = createVector(0, 0);
 
     this.vel1a = createVector(0, 0);
-    this.vel1b = createVector(0, 0);
-
-    this.vel2a = createVector(0, 0);
-    this.vel2b = createVector(0, 0);
 
     this.vel3a = createVector(0, 0);
-    this.vel3b = createVector(0, 0);
 
     this.vel4a = createVector(0, 0);
-    this.vel4b = createVector(0, 0);
   }
 
   run(){
     this.update();
-    //this.render();
   }
 
   update(){
     if(keyIsDown(LEFT_ARROW)){
       this.vel0a.x = 0.5;
-      this.vel0b.x = 0.5;
+      this.vel1a.x = 1;
+      this.vel3a.x = 2;
+      this.vel4a.x = 3;
+
+      game.state = 1
     }else if(keyIsDown(RIGHT_ARROW)){
       this.vel0a.x = -0.5;
-      this.vel0b.x = -0.5;
+      this.vel1a.x = -1;
+      this.vel3a.x = -2;
+      this.vel4a.x = -3;
+
+      game.state = 2;
     }else{
       this.vel0a.x = 0;
-      this.vel0b.x = 0;
-    }
-
-    if(keyIsDown(LEFT_ARROW)){
-      this.vel1a.x = 1;
-      this.vel1b.x = 1;
-    }else if(keyIsDown(RIGHT_ARROW)){
-      this.vel1a.x = -1;
-      this.vel1b.x = -1;
-    }else{
       this.vel1a.x = 0;
-      this.vel1b.x = 0;
-    }
-
-    if(keyIsDown(LEFT_ARROW)){
-      this.vel2a.x = 1;
-      this.vel2b.x = 1;
-    }else if(keyIsDown(RIGHT_ARROW)){
-      this.vel2a.x = -1;
-      this.vel2b.x = -1;
-    }else{
-      this.vel2a.x = 0;
-      this.vel2b.x = 0;
-    }
-
-    if(keyIsDown(LEFT_ARROW)){
-      this.vel3a.x = 3;
-      this.vel3b.x = 3;
-    }else if(keyIsDown(RIGHT_ARROW)){
-      this.vel3a.x = -3;
-      this.vel3b.x = -3;
-    }else{
       this.vel3a.x = 0;
-      this.vel3b.x = 0;
+      this.vel4a.x = 0;
+
+      game.state = 0;
     }
 
-    if(keyIsDown(LEFT_ARROW)){
-      this.vel4a.x = 4;
-      this.vel4b.x = 4;
-    }else if(keyIsDown(RIGHT_ARROW)){
-      this.vel4a.x = -4;
-      this.vel2b.x = -4;
-    }else{
-      this.vel4a.x = 0;
-      this.vel4b.x = 0;
-    }
     //+++++++++++++++++++++++++++++++
     this.loc0a.add(this.vel0a);
-    this.loc0b.add(this.vel0b);
+    this.loc0b.add(this.vel0a);
 
     this.loc1a.add(this.vel1a);
-    this.loc1b.add(this.vel1b);
+    this.loc1b.add(this.vel1a);
 
-    this.loc2a.add(this.vel2a);
-    this.loc2b.add(this.vel2b);
+    this.loc2a.add(this.vel1a);
+    this.loc2b.add(this.vel1a);
 
     this.loc3a.add(this.vel3a);
-    this.loc3b.add(this.vel3b);
+    this.loc3b.add(this.vel3a);
 
     this.loc4a.add(this.vel4a);
-    this.loc4b.add(this.vel4b);
+    this.loc4b.add(this.vel4a);
     //+++++++++++++++++++++++++++++++ image 2
     if(this.loc0a.x < -width){
-      this.loc0a.x = this.loc0b.x+this.imgs[0].width
+      this.loc0a.x = width;
     }
     if(this.loc0b.x < -width){
-      this.loc0b.x = this.loc0a.x+this.imgs[0].width
+      this.loc0b.x = width;
     }
-//+++++++++++++++++++++++++++++++++++++++++ image 1
+    //+++++++++++++++++++++++++++++++++++++++++ image 1
     if(this.loc1a.x < -width){
-      this.loc1a.x = this.loc1b.x+this.imgs[1].width
+      this.loc1a.x = width;
     }
     if(this.loc1b.x < -width){
-      this.loc1b.x = this.loc1a.x+this.imgs[1].width
+      this.loc1b.x = width;
     }
-//+++++++++++++++++++++++++++++++++++++image 3
+    //+++++++++++++++++++++++++++++++++++++image 3
     if(this.loc2a.x < -width){
-      this.loc2a.x = this.loc2b.x+this.imgs[2].width
+      this.loc2a.x = width;
     }
     if(this.loc2b.x < -width){
-      this.loc2b.x = this.loc2a.x+this.imgs[2].width
+      this.loc2b.x = width;
     }
-  //+++++++++++++++++++++++++++++++++++o
+    //+++++++++++++++++++++++++++++++++++image 4
+    if(this.loc3a.x < -this.imgs[3].width){
+      this.loc3a.x = width;
+    }
+    if(this.loc3b.x < -width){
+      this.loc3b.x = width;
+    }
+    //+++++++++++++++++++++++++++++++++++image 5
+    if(this.loc4a.x < -width){
+      this.loc4a.x = width;
+    }
+    if(this.loc4b.x < -width){
+      this.loc4b.x = width;
+    }
   }
 
   render(){
 
-    image(this.imgs[0], this.loc0a.x, this.loc0a.y, 900, 700);
-    image(this.imgs[0], this.loc0b.x, this.loc0b.y, 900, 700);
+    image(this.imgs[0], this.loc0a.x, this.loc0a.y);
+    image(this.imgs[0], this.loc0b.x, this.loc0b.y);
 
     image(this.imgs[1], this.loc1a.x, this.loc1a.y);
     image(this.imgs[1], this.loc1b.x, this.loc1b.y);

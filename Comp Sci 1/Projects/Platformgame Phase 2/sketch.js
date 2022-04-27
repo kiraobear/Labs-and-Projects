@@ -5,13 +5,15 @@
 //  globals
 let game;
 let bgImgs = [];
+let hImgs = [];
 function preload(){
   for(let i = 0; i < 5; i++){
     bgImgs[i] = loadImage("backgrounds/b" + i + ".png");
   }
-  //imgs[0] = loadImage('img0.png');
-  //imgs[1] = loadImage('img1.png');
-  //imgs[2] = loadImage('img2.png');
+
+  for(let i = 0; i < 5; i++){
+    hImgs[i] = loadImage("sprite/h" + i + ".png");
+  }
 }
 
 function setup() {
@@ -28,7 +30,7 @@ function draw() {
 
 //+++++++++++++++++++++++++++++++++++++++  callbacks
 
-function keyPressed(){
+function keyPressed(){//velocity change for jump
   if(keyIsDown(UP_ARROW)){
     game.hero.vel.y = -3;
     game.hero.acc.y = 0.1;
