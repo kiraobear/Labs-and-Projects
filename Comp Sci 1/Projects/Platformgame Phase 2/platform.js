@@ -6,7 +6,6 @@ class Platform{
 
   run(){
     this.update();
-    //this.render();
   }
 
   update(){

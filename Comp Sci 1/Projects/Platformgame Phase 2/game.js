@@ -5,9 +5,11 @@ class Game {
       this.hero;
       this.initGame();
       this.parallax;
+      //sprite states
+      this.state = 0
     }
 
-    initGame() {
+    initGame() {//create classes
       for(let i = 0; i < 20; i++){
         this.platforms[i] = new Platform(random(width), random(height));
       }
@@ -15,16 +17,16 @@ class Game {
       //for(let k = 0; k < 10; k++){
       //  this.collectables[k] = new Collectable(random(width), random(height));
       //}
-      this.hero = new Hero(100,random(height), createVector(0,0));
-      this.parallax = new Parallax(imgs);
+      this.hero = new Hero(100,100, createVector(0,0));
+      this.parallax = new Parallax(bgImgs);
     }
 
-    run() {
+    run() {//run
         this.updateGame();
         this.renderGame();
     }
 
-    updateGame() {
+    updateGame() {//update in classes
       this.parallax.run();
     //  for(let k = 0; k < 10; k++){
     //    this.collectables[k].run();
@@ -35,7 +37,7 @@ class Game {
       }
     }
 
-    renderGame() {
+    renderGame() {//render in classes
       this.parallax.render();
     //  for(let k = 0; k < 10; k++){
     //    this.collectables[k].render();
