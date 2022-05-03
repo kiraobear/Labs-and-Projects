@@ -6,18 +6,18 @@ class Game {
       this.initGame();
       this.parallax;
       //sprite states
-      this.spriteState = 0
+      this.state = 0
     }
 
     initGame() {//create classes
       for(let i = 0; i < 2; i++){
-        this.platforms[i] = new Platform(random(150), height-random(height/3));
+        this.platforms[i] = new Platform(random(0, 100), height-random(height/2));
       }
 
       //for(let k = 0; k < 10; k++){
       //  this.collectables[k] = new Collectable(random(width), random(height));
       //}
-      this.hero = new Hero(100,100, createVector(0,0));
+      this.hero = new Hero(100,100, createVector(0,2));
       this.parallax = new Parallax(bgImgs);
     }
 

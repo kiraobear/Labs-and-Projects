@@ -40,9 +40,16 @@ function draw() {
 
 //+++++++++++++++++++++++++++++++++++++++  callbacks
 
+// function keyPressed(){//velocity change for jump
+//   if(keyIsDown(UP_ARROW)){
+//     game.hero.vel.y = -3;
+//     game.hero.acc.y = 0.1;
+//   }
+// }
 
-function keyPressed(){//velocity change for jump
-  if(keyCode === UP_ARROW){
-   game.hero.jump();
-  }
-}
+// function keyPressed(){//velocity change for jump
+//   if(keyCode === UP_ARROW){
+//    game.hero.jump();
+//   }
+// }
+

@@ -37,7 +37,6 @@ class Parallax{
       this.vel1a.x = 1;
       this.vel3a.x = 2;
       this.vel4a.x = 3;
-      game.spriteState = 1
 
       game.state = 1
     }else if(keyIsDown(RIGHT_ARROW)){
@@ -45,7 +44,6 @@ class Parallax{
       this.vel1a.x = -1;
       this.vel3a.x = -2;
       this.vel4a.x = -3;
-      game.spriteState = 2
 
       game.state = 2;
     }else{
@@ -54,7 +52,7 @@ class Parallax{
       this.vel3a.x = 0;
       this.vel4a.x = 0;
 
-      game.spriteState = 0;
+      game.state = 0;
     }
 
     //+++++++++++++++++++++++++++++++

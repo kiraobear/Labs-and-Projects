@@ -12,8 +12,8 @@ class Hero {
 
   run() {
     this.update();
-    this.checkEdges();
-    //this.isColliding = this.collisions();
+    ///////////////////this.checkEdges();
+    this.isColliding = this.collisions();
   }
 
   render() {
@@ -25,6 +25,40 @@ class Hero {
       this.count = 0;
     }
   }
+
+
+
+  update() {
+    this.vel.add(this.acc);
+    this.loc.add(this.vel);
+    if (this.collisions()) {
+      this.vel.y = 0;
+      this.acc.y = 0;
+      this.loc.y = this.pLevel - 50;
+    } else {
+      this.acc.y = 0.1;
+    }
+    this.vel.limit(5);
+  }
+
+
+  collisions() {
+    for (let i = 0; i < game.platforms.length; i++) {
+      if (this.loc.y + 53 > game.platforms[i].loc.y
+        && this.loc.y + 53 < game.platforms[i].loc.y + 20
+        && this.loc.x + 15 > game.platforms[i].loc.x
+        && this.loc.x + 15 < game.platforms[i].loc.x + 115) {
+        //this.pLevel = game.platforms[i].loc.y-22;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // jump(){
+  //   this.vel.y = -3;
+  //   this.acc.y = 0.1;
+  // }
 
   checkEdges() {
     if (this.loc.x > width) {
@@ -41,38 +75,5 @@ class Hero {
     }
   }
 
-
-  update() {
-    this.vel.add(this.acc);
-    this.loc.add(this.vel);
-    if (this.collisions()) {
-      this.vel.y = 0;
-      this.acc.y = 0;
-      this.loc.y = this.pLevel - 50;
-    } else {
-      this.acc.y = 0.1;
-    }
-    this.vel.limit(5);
-  }
-
-  jump(){
-    this.loc.y -=5;//  move hero above platform
-    this.vel.y = -5;
-    this.acc.y = 0.05;
-  }
-
-
-  collisions() {
-    for (let i = 0; i < game.platforms.length; i++) {
-      if (this.loc.y + 53 > game.platforms[i].loc.y
-        && this.loc.y + 53 < game.platforms[i].loc.y + 20
-        && this.loc.x + 15 > game.platforms[i].loc.x
-        && this.loc.x + 15 < game.platforms[i].loc.x + 115) {
-        this.pLevel = game.platforms[i].loc.y;
-        return true;
-      }
-    }
-    return false;
-  }
 
 }//  +++++++++++++++++  end class
