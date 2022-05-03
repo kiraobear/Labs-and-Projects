@@ -1,6 +1,6 @@
 class Collectable{
-  constructor(x, y){
-    this.loc = createVector(x, y);
+  constructor(){
+    this.loc = createVector(game.platforms[i].loc.x, game.platforms[i].loc.y);
   }
 
   run(){
@@ -13,6 +13,7 @@ class Collectable{
 //  }
 
   render(){
+    fill(200, 190, 20);
     ellipse(this.loc.x, this.loc.y, 20);
   }
 }
