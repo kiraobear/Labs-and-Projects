@@ -2,7 +2,7 @@
 class Game{
     constructor(){
         this.player;
-        this.platforms;
+        this.platforms = [];
 
     }
 
@@ -14,17 +14,26 @@ class Game{
    }
 
     init(){
-        this.player = new Player();
+        this.player = new Player(200, 200);
+        // for(let i = 0; i < 2; i++){
+        //     this.platforms[i] = new Platform();
+        // }
 
     }
 
     render(){
         this.player.render();
+        // for(let i = 0; i < 2; i++){
+        //     this.platforms[i].render();
+        // }
 
     }
     
     update(){
         this.player.update();
+        // for(let i = 0; i < 2; i++){
+        //     this.platforms[i].run();
+        // }
 
     }
     

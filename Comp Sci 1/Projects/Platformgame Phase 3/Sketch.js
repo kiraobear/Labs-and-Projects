@@ -4,7 +4,7 @@
 let chickFiLost;
 
 function setup() {
-  let cnv = createCanvas(400, 400);
+  let cnv = createCanvas(800, 800);
   cnv.position((windowWidth - width) / 2, 30);
 
     chickFiLost = new Game();
@@ -12,8 +12,16 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(0);
   
   chickFiLost.run();
 
 }
+
+function keyPressed(){
+  if (keyCode === UP_ARROW || keyCode === 32 || keyCode === 87){
+    chickFiLost.player.jump();
+
+  }
+}
+

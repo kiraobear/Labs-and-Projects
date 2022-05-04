@@ -1,43 +1,62 @@
 class Player{
     constructor(x, y){
         this.loc = createVector(x ,y);
-        this.vel = createVector(0, 0);
+        this.vel = createVector(0, 1);
         this.acc = createVector(0, 0.05);
+        this.speed = 2;
+        this.jumpForce = 5;
+
     }
     
     render(){
         push();
         noStroke();
-        
+        fill(255);
+        ellipse(this.loc.x, this.loc.y, 30);
         pop();
         
+        push();
+        stroke(255, 0, 0);
+        strokeWeight(2);
+        point(this.loc.x, this.loc.y);
+        pop();
 
     }
 
     update(){
-        //++++++++++ functions
-        this.move();
-        //+++++++++++++++++++++++++ everything else
-        // this.loc.add(this.vel);
-        // this.vel.add(this.acc);
+        // this.move();
+        this.gravity();
+
+    }
+
+    gravity(){
+        this.vel.limit(5);
+        this.loc.add(this.vel);
+        this.vel.add(this.acc);
+        console.log("Loc X: " + this.loc.x);
+        console.log("Loc Y: " + this.loc.y);
+        console.log("Vel X: " + this.vel.x);
+        console.log("Vel Y: " + this.vel.y);
+        console.log("Acc Y: " + this.acc.y);
+
     }
 
     jump(){
-        this.loc.y -=5;
-        this.vel.y = -5;
-        this.acc = 0.05;
+        this.vel.y = -this.jumpForce;
+
     }
 
     move(){
-        if(keyIsDown(UP_ARROW)){
-            this.jump();
-        }
         if(keyIsDown(LEFT_ARROW)){
-            this.vel.x = -2
+            chickFilost.platforms[i].vel.x = -this.speed;
+
         }
+
         if(keyIsDown(RIGHT_ARROW)){
-            this.v
-        }
+            chickFilost.platforms[i].this.vel.x = this.speed;
+            
+        } 
+
     }
       
 }
