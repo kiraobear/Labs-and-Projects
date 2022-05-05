@@ -3,14 +3,15 @@ class Game{
     constructor(){
         this.player;
         this.platforms = [];
+        this.init();
 
     }
 
    run(){
-       this.init();
+       // this.init();
        this.update();
        this.render();
-       
+
    }
 
     init(){
@@ -28,7 +29,7 @@ class Game{
         // }
 
     }
-    
+
     update(){
         this.player.update();
         // for(let i = 0; i < 2; i++){
@@ -36,6 +37,6 @@ class Game{
         // }
 
     }
-    
+
 }
 //End Class Game##########
