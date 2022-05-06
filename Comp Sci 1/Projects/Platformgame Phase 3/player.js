@@ -3,8 +3,14 @@ class Player{
         this.loc = createVector(x ,y);
         this.vel = createVector(0, 0);
         this.acc = createVector(0, 0.08);
-        this.speed = 2;//***** speed for platforms *****
-        this.jumpForce = 9;//****** jump power for player *****
+        this.lngth = 30;
+        this.wdth = 30;
+        this.immobile = true;
+        this.jumpCount = 0;
+        //***** speed for platforms *****
+        this.speed = 2;
+        //****** jump power for player *****
+        this.jumpForce = 9;
 
     }
 
@@ -12,7 +18,7 @@ class Player{
         push();
         noStroke();
         fill(255);
-        ellipse(this.loc.x, this.loc.y, 30);
+        ellipse(this.loc.x, this.loc.y, this.lngth, this.wdth);
         pop();
 
         push();
@@ -36,7 +42,9 @@ class Player{
     }
 
     jump(){
-        this.vel.y = -this.jumpForce;//***** change y velocity if jump *****
+        //***** change y velocity if jump & player still has jumps left *****
+        if (this.jumpCount > 0) this.vel.y = -this.jumpForce;
+        this.jumpCount--;
 
     }
 
