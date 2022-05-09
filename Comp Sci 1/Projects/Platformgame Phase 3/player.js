@@ -21,10 +21,17 @@ class Player{
         ellipse(this.loc.x, this.loc.y, this.lngth, this.wdth);
         pop();
 
+        //Checking Bounds#####
+        //Delete When Finished#####
         push();
         stroke(255, 0, 0);
-        strokeWeight(2);
-        point(this.loc.x, this.loc.y);
+        strokeWeight(3);
+        point(this.loc.x, this.loc.y + (this.wdth / 8));
+        pop();
+
+        push();
+        stroke(0, 255, 0);
+        line(this.loc.x - 20, this.loc.y + (this.wdth / 2), this.loc.x + 20, this.loc.y + (this.wdth / 2));
         pop();
 
     }

@@ -1,7 +1,7 @@
 class Platform{
     constructor(){
        this.loc = createVector(floor(random(width)), floor(random(height)));
-       this.vel = createVector(0, 0); 
+       this.vel = createVector(0, 0);
        this.lngth = floor(random(50, 100));
        this.wdth = 15;
        //Platform Bounds#####
@@ -14,20 +14,60 @@ class Platform{
 
        };
 
+       //Type Of Platform#####
+       //30% Seed, 0 - 0.3#####
+       //10% Feather, 0.3 - 0.4#####
+       //30% Enemy, 0.4 - 0.7#####
+       //20% Trap w/Seed, 0.7 - 0.9#####
+       //10% Empty, 0.9 - 1#####
+       this.type = round(random(0, 1), 1);
+       if (this.type <= 0.3){
+         this.generateEntity("SEED");
+         console.log("SEED");
+
+       } else if (this.type > 0.3 && this.type <= 0.4){
+         this.generateEntity("FEATHER");
+         console.log("FEATHER");
+
+       } else if (this.type > 0.4 && this.type <= 0.7){
+         this.generateEntity("ENEMY");
+         console.log("ENEMY");
+
+       } else if (this.type > 0.7 && this.type <= 0.9){
+         this.generateEntity("TRAP");
+         console.log("TRAP");
+
+       } else if (this.type > 0.9){
+         console.log("NONE");
+
+       }
+
     }
-    
+
+    generateEntity(typ){
+      if (typ === "SEED"){
+
+      } else if (typ === "FEATHER"){
+
+      } else if (typ === "ENEMY"){
+
+      } else if (typ === "TRAP"){
+        
+      }
+    }
+
     render(){
         push();
         noStroke();
         fill(0, 0, 255);
         rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
         pop();
-         
+
     }
 
-    update(i){
+    update(){
         this.move();
-        this.checkPlayerCollision(i);
+        this.checkPlayerCollision();
 
     }
 
@@ -37,13 +77,13 @@ class Platform{
             //***** if the arrow key is down make x velocity speed variable *****
             if (keyIsDown(LEFT_ARROW) || keyIsDown(65)){
                 this.vel.x = chickFiLost.player.speed;
-    
+
             } else if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)){
                 this.vel.x = -chickFiLost.player.speed;
-    
+
             } else {
                 this.vel.x = 0;
-    
+
             }
 
         }
@@ -58,23 +98,25 @@ class Platform{
 
     }
 
-    checkPlayerCollision(i){
+    checkPlayerCollision(){
         //Player X and Y Location#####
+        //With Some Changes To Allow For A smoother Feel In Game#####
         let playerX = chickFiLost.player.loc.x;
-        let playerY = chickFiLost.player.loc.y;
-        let playerWdth = chickFiLost.player.wdth / 2;
-        let playerLngth = chickFiLost.player.lngth / 2;
+        let playerY = chickFiLost.player.loc.y + (chickFiLost.player.wdth / 8);
+        let playerWdthBound = chickFiLost.player.wdth / 2;
 
-        if (playerY + playerWdth >= this.bounds.top &&
-            playerY - playerWdth <= this.bounds.lower &&
-            playerX - playerLngth >= this.bounds.left &&
-            playerX + playerLngth <= this.bounds.right &&
+        if (playerY + playerWdthBound >= this.bounds.top &&
+            playerY <= this.bounds.lower &&
+            playerX >= this.bounds.left &&
+            playerX <= this.bounds.right &&
             chickFiLost.player.vel.y > 0){
-                
+              // ^ Player Detection True If Player Is Also Falling Down#####
+
                 //Platforms Can Now Move#####
                 //Mainly For The Beginning#####
                 chickFiLost.player.immobile = false;
-                chickFiLost.player.loc.y = this.bounds.top + playerWdth;
+                //Dont Want The Player Inside The Platforms#####
+                chickFiLost.player.loc.y = this.bounds.top - playerWdthBound;
                 //Resets Player Vel Y#####
                 chickFiLost.player.vel.y = 0;
                 //Resets Player Jumps#####

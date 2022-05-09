@@ -1,8 +1,8 @@
 class Collectables{
-    constructor(x, y){
+    constructor(x, y, l, w){
         this.loc = createVector(x, y);
-        this.lngth = 20;
-        this.wdth = 20;
+        this.lngth = l;
+        this.wdth = w;
         //***** Collectable Bounds *****
         this.bounds = {
             top : this.loc.y,
@@ -11,16 +11,9 @@ class Collectables{
             right : this.loc.x + this.lngth
 
         };
+
     }
 
-    update(){
-        this.playerCollision();
-    }
     
-    playerCollision(){
-        let playerX = chickFiLost.player.x;
-        let playerY = chickFiLost.player.y;
 
-        
-    }
 }

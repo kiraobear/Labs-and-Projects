@@ -6,6 +6,7 @@ let chickFiLost;
 function setup() {
   let cnv = createCanvas(600, 600);
   cnv.position((windowWidth - width) / 2, 30);
+  background(0);
 
     chickFiLost = new Game();
 
