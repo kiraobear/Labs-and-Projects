@@ -4,14 +4,6 @@ class Game{
         this.player;
         this.platforms = [];
 
-        //***** Collectables *****
-        //Points#####
-        this.seeds = [];
-        //Increase Health#####
-        this.hearts = [];
-        //Speed Boost#####
-        this.feathers = [];
-
         this.init();
 
     }

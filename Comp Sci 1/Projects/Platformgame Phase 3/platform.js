@@ -22,38 +22,26 @@ class Platform{
        //10% Empty, 0.9 - 1#####
        this.type = round(random(0, 1), 1);
        if (this.type <= 0.3){
-         this.generateEntity("SEED");
          console.log("SEED");
+         this.entity = new Collectable(this.loc.x, this.loc.y, 20, 20);
 
        } else if (this.type > 0.3 && this.type <= 0.4){
-         this.generateEntity("FEATHER");
          console.log("FEATHER");
+         this.entity = new Collectable(this.loc.x, this.loc.y, 20, 20);
 
        } else if (this.type > 0.4 && this.type <= 0.7){
-         this.generateEntity("ENEMY");
          console.log("ENEMY");
+         this.entity = new Collectable(this.loc.x, this.loc.y, 20, 20);
 
        } else if (this.type > 0.7 && this.type <= 0.9){
-         this.generateEntity("TRAP");
          console.log("TRAP");
+         this.entity = new Collectable(this.loc.x, this.loc.y, 20, 20);
 
        } else if (this.type > 0.9){
          console.log("NONE");
 
        }
 
-    }
-
-    generateEntity(typ){
-      if (typ === "SEED"){
-
-      } else if (typ === "FEATHER"){
-
-      } else if (typ === "ENEMY"){
-
-      } else if (typ === "TRAP"){
-        
-      }
     }
 
     render(){
@@ -67,7 +55,8 @@ class Platform{
 
     update(){
         this.move();
-        this.checkPlayerCollision();
+        this.updateBounds();
+        this.playerDetection();
 
     }
 
@@ -90,15 +79,17 @@ class Platform{
 
         this.loc.add(this.vel);
 
-        //Bounds Update#####
-        this.bounds.top = this.loc.y;
-        this.bounds.lower = this.loc.y + (this.wdth / 2);
-        this.bounds.left = this.loc.x;
-        this.bounds.right = this.loc.x + this.lngth;
+    }
+
+    updateBounds(){
+      this.bounds.top = this.loc.y;
+      this.bounds.lower = this.loc.y + (this.wdth / 2);
+      this.bounds.left = this.loc.x;
+      this.bounds.right = this.loc.x + this.lngth;
 
     }
 
-    checkPlayerCollision(){
+    playerDetection(){
         //Player X and Y Location#####
         //With Some Changes To Allow For A smoother Feel In Game#####
         let playerX = chickFiLost.player.loc.x;
