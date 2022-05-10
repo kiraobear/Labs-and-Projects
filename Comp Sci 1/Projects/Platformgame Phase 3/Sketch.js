@@ -8,7 +8,7 @@ function setup() {
   cnv.position((windowWidth - width) / 2, 30);
   background(0);
 
-    chickFiLost = new Game();
+  chickFiLost = new Game();
 
 }
 
@@ -24,4 +24,5 @@ function keyPressed(){
     chickFiLost.player.jump();
 
   }
+  
 }
