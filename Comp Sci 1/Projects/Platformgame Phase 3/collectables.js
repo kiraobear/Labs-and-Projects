@@ -1,3 +1,4 @@
+//Start Class Collectable##########
 class Collectable{
   constructor(x, y, l, w){
     this.loc = createVector(x, y);
@@ -17,9 +18,6 @@ class Collectable{
   }
 
   update(pX, pL){
-    //DELETE AFTER TESTING#####
-    this.render();
-
     //pX --> Platform X Location#####
     //pL --> Platform Length#####
     this.follow(pX, pL);
@@ -29,15 +27,16 @@ class Collectable{
   }
 
   follow(pX, pL){
-    this.loc.x = pX + (pL / 2);
+    //Centers Collectable To Center Of Parent Platform#####
+    this.loc.x = pX + (pL / 2) - (this.lngth / 2);
 
   }
 
   updateBounds(){
     this.bounds.top = this.loc.y;
     this.bounds.lower = this.loc.y + this.wdth;
-    this.bounds.left = this.loc.x;
-    this.bounds.right = this.loc.x + this.lngth;
+    this.bounds.left = this.loc.x - (this.lngth / 2);
+    this.bounds.right = this.loc.x + (this.lngth / 2);
 
   }
 
@@ -53,7 +52,6 @@ class Collectable{
       playerX + playerLngthBound >= this.bounds.left &&
       playerX - playerLngthBound <= this.bounds.right){
 
-        console.log("Detected");
         return true;
 
       }
@@ -62,14 +60,31 @@ class Collectable{
 
     }
 
-    render(){
-      push();
-      noStroke();
-      fill(255, 255, 0);
-      // rectMode(CENTER);
-      rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
-      pop();
+  }
+//End Class Collectable##########
 
-    }
+//Start Class Seed##########
+class Seed extends Collectable{
+  constructor(x, y, l, w){
+    super(x, y, l, w);
 
   }
+
+  update(pX, pL){
+    //***** inheritence ******
+    super.follow(pX, pL);
+    super.updateBounds();
+    super.playerDetected = super.playerDetection();
+
+  }
+
+  render(){
+    push();
+    fill(255);
+    rect(super.x, super.y, super.lngth, super.wdth);
+    pop();
+
+  }
+
+}
+//End Class Seed##########

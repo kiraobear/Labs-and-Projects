@@ -23,19 +23,19 @@ class Platform{
     this.type = round(random(0, 1), 1);
     if (this.type <= 0.3){
       console.log("SEED");
-      this.entity = new Collectable(this.loc.x, this.loc.y - 30, 20, 20);
+      this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.3 && this.type <= 0.4){
       console.log("FEATHER");
-      this.entity = new Collectable(this.loc.x, this.loc.y - 30, 20, 20);
+      this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.4 && this.type <= 0.7){
       console.log("ENEMY");
-      this.entity = new Collectable(this.loc.x, this.loc.y - 30, 20, 20);
+      this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.7 && this.type <= 0.9){
       console.log("TRAP");
-      this.entity = new Collectable(this.loc.x, this.loc.y - 30, 20, 20);
+      this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.9){
       console.log("NONE");
@@ -50,6 +50,12 @@ class Platform{
     fill(0, 0, 255);
     rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
+
+    //Entity Function#####
+    if (this.entity){
+      this.entity.render();
+
+    }
 
   }
 
