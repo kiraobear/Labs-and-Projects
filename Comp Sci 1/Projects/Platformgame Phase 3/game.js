@@ -11,8 +11,8 @@ class Game{
   init(){
     this.player = new Player(200, 0);
 
-    for (let i = 0; i < 10; i++){
-      this.platforms[i] = new Platform();
+    for (let i = 0; i < 2500; i++){
+      this.platforms[i] = new Platform(i * 80);
 
     }
 

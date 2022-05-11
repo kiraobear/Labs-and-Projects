@@ -71,21 +71,49 @@ class Seed extends Collectable{
 
   }
 
-  // update(pX, pL){
-  //   ***** inheritence ******
-  //   this.follow(pX, pL);
-  //   this.updateBounds();
-  //   this.playerDetected = this.playerDetection();
-  //
-  // }
-
   render(){
     push();
-    fill(255);
-    rect(this.x, this.y, this.lngth, this.wdth);
+    fill(255, 0, 0);
+    rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
 
   }
 
 }
 //End Class Seed##########
+
+//Start Feather Seed##########
+class Feather extends Collectable{
+  constructor(x, y, l, w){
+    super(x, y, l, w);
+
+  }
+
+  render(){
+    push();
+    fill(0, 255, 0);
+    rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
+    pop();
+
+  }
+
+}
+//End Feather Seed##########
+
+//Start Heart Seed##########
+class Heart extends Collectable{
+  constructor(x, y, l, w){
+    super(x, y, l, w);
+
+  }
+
+  render(){
+    push();
+    fill(255);
+    rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
+    pop();
+
+  }
+
+}
+//End Heart Seed##########

@@ -1,6 +1,6 @@
 class Platform{
-  constructor(){
-    this.loc = createVector(floor(random(width)), floor(random(height)));
+  constructor(x){
+    this.loc = createVector(x, floor(random(height * 0.25, height - (height * 0.25))));
     this.vel = createVector(0, 0);
     this.lngth = floor(random(50, 100));
     this.wdth = 15;
@@ -27,7 +27,7 @@ class Platform{
 
     } else if (this.type > 0.3 && this.type <= 0.4){
       console.log("FEATHER");
-      this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
+      this.entity = new Feather(this.loc.x, this.loc.y - 60, 20, 50);
 
     } else if (this.type > 0.4 && this.type <= 0.7){
       console.log("ENEMY");
@@ -52,10 +52,10 @@ class Platform{
     pop();
 
     //Entity Function#####
-    // if (this.entity){
-    //   this.entity.render();
-    //
-    // }
+    if (this.entity){
+      this.entity.render();
+    
+    }
 
   }
 
@@ -68,6 +68,8 @@ class Platform{
     //Entity Function#####
     if (this.entity){
       this.entity.update(this.loc.x, this.lngth);
+
+      if (this.entity.playerDetected) this.entity = 0;
 
     }
 
