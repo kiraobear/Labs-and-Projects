@@ -52,6 +52,7 @@ class Collectable{
       playerX + playerLngthBound >= this.bounds.left &&
       playerX - playerLngthBound <= this.bounds.right){
 
+        console.log("DETECTED");
         return true;
 
       }
@@ -70,18 +71,18 @@ class Seed extends Collectable{
 
   }
 
-  update(pX, pL){
-    //***** inheritence ******
-    super.follow(pX, pL);
-    super.updateBounds();
-    super.playerDetected = super.playerDetection();
-
-  }
+  // update(pX, pL){
+  //   ***** inheritence ******
+  //   this.follow(pX, pL);
+  //   this.updateBounds();
+  //   this.playerDetected = this.playerDetection();
+  //
+  // }
 
   render(){
     push();
     fill(255);
-    rect(super.x, super.y, super.lngth, super.wdth);
+    rect(this.x, this.y, this.lngth, this.wdth);
     pop();
 
   }

@@ -52,10 +52,10 @@ class Platform{
     pop();
 
     //Entity Function#####
-    if (this.entity){
-      this.entity.render();
-
-    }
+    // if (this.entity){
+    //   this.entity.render();
+    //
+    // }
 
   }
 
