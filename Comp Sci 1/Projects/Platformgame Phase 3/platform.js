@@ -22,23 +22,23 @@ class Platform{
     //10% Empty, 0.9 - 1#####
     this.type = round(random(0, 1), 1);
     if (this.type <= 0.3){
-      console.log("SEED");
+      // console.log("SEED");
       this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.3 && this.type <= 0.4){
-      console.log("FEATHER");
+      // console.log("FEATHER");
       this.entity = new Feather(this.loc.x, this.loc.y - 60, 20, 50);
 
     } else if (this.type > 0.4 && this.type <= 0.7){
-      console.log("ENEMY");
+      // console.log("ENEMY");
       this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.7 && this.type <= 0.9){
-      console.log("TRAP");
+      // console.log("TRAP");
       this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.9){
-      console.log("NONE");
+      // console.log("NONE");
 
     }
 

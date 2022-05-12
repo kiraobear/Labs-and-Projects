@@ -3,6 +3,7 @@ class Game{
   constructor(){
     this.player;
     this.platforms = [];
+    this.background = [];
 
     this.init();
 
@@ -16,6 +17,10 @@ class Game{
 
     }
 
+    for (let i = 0; i < 5; i++){
+      this.background[i] = new Parallax(i);
+    }
+
   }
 
   run(){
@@ -25,6 +30,10 @@ class Game{
   }
 
   render(){
+    for (let i = 0; i < this.background.length; i++){
+      this.background[i].render();
+    }
+
     this.player.render();
 
     //Backwards Loop Bc Of Splicing#####

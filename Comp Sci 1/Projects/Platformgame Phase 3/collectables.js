@@ -109,7 +109,7 @@ class Heart extends Collectable{
 
   render(){
     push();
-    fill(255);
+    fill(0, 0, 255);
     rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
 
