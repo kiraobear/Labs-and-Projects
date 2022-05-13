@@ -1,5 +1,6 @@
 class Platform{
   constructor(x){
+    this.img = loadImage("art/platform/p0.png");
     this.loc = createVector(x, floor(random(height * 0.25, height - (height * 0.25))));
     this.vel = createVector(0, 0);
     this.lngth = floor(random(50, 100));
@@ -45,10 +46,17 @@ class Platform{
   }
 
   render(){
+    //platform dimension 156 x 40
+    // push();
+    // noStroke();
+    // fill(0, 0, 255);
+    // rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
+    // pop();
+
     push();
-    noStroke();
-    fill(0, 0, 255);
-    rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
+    // noStroke();
+    // fill(0, 0, 255);
+    image(this.img, this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
 
     //Entity Function#####
@@ -76,7 +84,7 @@ class Platform{
   }
 
   move(){
-    //Prevent Platforms From Moving Until Player Settles A Platform Below
+    //Prevent Platforms From Moving Until Player Settles A Platform Below#####
     if (!chickFiLost.player.immobile){
       //***** if the arrow key is down make x velocity speed variable *****
       if (keyIsDown(LEFT_ARROW) || keyIsDown(65)){
