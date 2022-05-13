@@ -51,6 +51,6 @@ class Parallax{
         image(this.img, this.loc2.x, this.loc1.y);
         // image(this.img, 0, 0);
         // image(this.img, this.loc2.x, this.loc2.y);
-        
+
     }
 }

@@ -35,8 +35,8 @@ class Collectable{
   updateBounds(){
     this.bounds.top = this.loc.y;
     this.bounds.lower = this.loc.y + this.wdth;
-    this.bounds.left = this.loc.x - (this.lngth / 2);
-    this.bounds.right = this.loc.x + (this.lngth / 2);
+    this.bounds.left = this.loc.x;
+    this.bounds.right = this.loc.x + this.lngth;
 
   }
 

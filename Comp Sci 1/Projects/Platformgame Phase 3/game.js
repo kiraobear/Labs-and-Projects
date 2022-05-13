@@ -12,7 +12,7 @@ class Game{
   init(){
     this.player = new Player(200, 0);
 
-    for (let i = 0; i < 0; i++){
+    for (let i = 0; i < 25; i++){
       this.platforms[i] = new Platform(i * 80);
 
     }
@@ -49,7 +49,7 @@ class Game{
   update(){
     for (let i = this.background.length - 1; i >= 0; i--){
       this.background[i].update();
-      
+
     }
 
     this.player.update();

@@ -54,15 +54,13 @@ class Platform{
     // pop();
 
     push();
-    // noStroke();
-    // fill(0, 0, 255);
     image(this.img, this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
 
     //Entity Function#####
     if (this.entity){
       this.entity.render();
-    
+
     }
 
   }
