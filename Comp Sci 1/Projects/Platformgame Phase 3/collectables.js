@@ -68,13 +68,13 @@ class Collectable{
 class Seed extends Collectable{
   constructor(x, y, l, w){
     super(x, y, l, w);
+    this.img = loadImage("art/collectables/r1.png");
 
   }
 
   render(){
     push();
-    fill(255, 0, 0);
-    rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
+    image(this.img, this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
 
   }
@@ -82,38 +82,38 @@ class Seed extends Collectable{
 }
 //End Class Seed##########
 
-//Start Feather Seed##########
+//Start Class Feather##########
 class Feather extends Collectable{
   constructor(x, y, l, w){
     super(x, y, l, w);
+    this.img = loadImage("art/collectables/r2.png");
 
   }
 
   render(){
     push();
-    fill(0, 255, 0);
-    rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
+    image(this.img, this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
 
   }
 
 }
-//End Feather Seed##########
+//End Class Feather##########
 
-//Start Heart Seed##########
+//Start Class Heart##########
 class Heart extends Collectable{
   constructor(x, y, l, w){
     super(x, y, l, w);
+    this.img = loadImage("art/collectables/r0.png");
 
   }
 
   render(){
     push();
-    fill(0, 0, 255);
-    rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
+    image(this.img, this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
 
   }
 
 }
-//End Heart Seed##########
+//End Class Heart##########

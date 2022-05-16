@@ -24,7 +24,7 @@ class Platform{
     this.type = round(random(0, 1), 1);
     if (this.type <= 0.3){
       // console.log("SEED");
-      this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
+      this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 40);
 
     } else if (this.type > 0.3 && this.type <= 0.4){
       // console.log("FEATHER");

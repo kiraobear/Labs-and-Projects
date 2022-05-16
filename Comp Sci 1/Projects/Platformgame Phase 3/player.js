@@ -12,6 +12,12 @@ class Player{
     //****** jump power for player *****
     this.jumpForce = 9;
 
+    this.playerSprites = this.loadSprites();
+
+  }
+
+  loadSprites(){
+    
   }
 
   render(){
