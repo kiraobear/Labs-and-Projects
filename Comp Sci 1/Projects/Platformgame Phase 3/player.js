@@ -17,7 +17,30 @@ class Player{
   }
 
   loadSprites(){
-    
+    let spriteTypes = {
+      idle : [],
+      walk : [],
+      jump : []
+
+    };
+
+    for (let i = 0; i < 4; i++){
+      spriteTypes.idle[i] = loadImage("art/sprites/idle" + i + ".png")
+
+    }
+
+    for (let i = 0; i < 5; i++){
+      spriteTypes.walk[i] = loadImage("art/sprites/walking" + i + ".png")
+
+    }
+
+    for (let i = 0; i < 7; i++){
+      spriteTypes.jump[i] = loadImage("art/sprites/jumping" + i + ".png")
+
+    }
+
+    return spriteTypes;
+
   }
 
   render(){
