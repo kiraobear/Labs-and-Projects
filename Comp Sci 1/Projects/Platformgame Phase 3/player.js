@@ -3,16 +3,17 @@ class Player{
     this.loc = createVector(x ,y);
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0.08);
-    this.lngth = 30;
-    this.wdth = 30;
+    this.lngth = 59;
+    this.wdth = 65;
     this.immobile = true;
     this.jumpCount = 0;
     //***** speed for platforms *****
     this.speed = 2;
     //****** jump power for player *****
-    this.jumpForce = 9;
+    this.jumpForce = 3.5;
 
     this.playerSprites = this.loadSprites();
+    this.frameCount = 0;
 
   }
 
@@ -25,17 +26,17 @@ class Player{
     };
 
     for (let i = 0; i < 4; i++){
-      spriteTypes.idle[i] = loadImage("art/sprites/idle" + i + ".png")
+      spriteTypes.idle[i] = loadImage("art/sprites/idle/hi" + i + ".png")
 
     }
 
     for (let i = 0; i < 5; i++){
-      spriteTypes.walk[i] = loadImage("art/sprites/walking" + i + ".png")
+      spriteTypes.walk[i] = loadImage("art/sprites/walking/hw" + i + ".png")
 
     }
 
     for (let i = 0; i < 7; i++){
-      spriteTypes.jump[i] = loadImage("art/sprites/jumping" + i + ".png")
+      spriteTypes.jump[i] = loadImage("art/sprites/jumping/hj" + i + ".png")
 
     }
 
@@ -45,10 +46,12 @@ class Player{
 
   render(){
     push();
-    noStroke();
-    fill(255);
-    ellipse(this.loc.x, this.loc.y, this.lngth, this.wdth);
+    imageMode(CENTER);
+    image(this.playerSprites.idle[floor(this.frameCount / 15)], this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
+
+    if (this.frameCount >= 60) this.frameCount = 0;
+    this.frameCount++;
 
     //Checking Bounds#####
     //Delete When Finished#####
@@ -71,7 +74,7 @@ class Player{
   }
 
   gravity(){
-    this.vel.limit(3);
+    this.vel.limit(4);
     this.vel.add(this.acc);
     this.loc.add(this.vel);
 

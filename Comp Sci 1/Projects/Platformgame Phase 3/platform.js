@@ -128,7 +128,7 @@ class Platform{
         //Mainly For The Beginning#####
         chickFiLost.player.immobile = false;
         //Dont Want The Player Inside The Platforms#####
-        chickFiLost.player.loc.y = this.bounds.top - playerWdthBound;
+        chickFiLost.player.loc.y = this.bounds.top - playerWdthBound + 5;
         //Resets Player Vel Y#####
         chickFiLost.player.vel.y = 0;
         //Resets Player Jumps#####
