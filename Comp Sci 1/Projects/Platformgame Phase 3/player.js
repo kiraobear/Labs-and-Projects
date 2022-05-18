@@ -66,7 +66,7 @@ class Player{
     let currentFrame = 0;
 
     if (this.spriteState === "IDLE"){
-      this.frameCount = 0;
+      this.frameCount = 0;//MAKE THIS HAPPEN ONLY ONCE!!!!!!!!!!!!!!!!!!!!!!!!
       frameMultiplier = this.playerSprites.idle.length - 1;
       currentFrame = floor(this.frameCount / this.frameSpeed);
 
@@ -76,7 +76,7 @@ class Player{
       pop();
 
     } else if (this.spriteState === "WALK"){
-      this.frameCount = 0;
+      this.frameCount = 0;//MAKE THIS HAPPEN ONLY ONCE!!!!!!!!!!!!!!!!!!!!!!!!
       frameMultiplier = this.playerSprites.walk.length - 1;
       currentFrame = floor(this.frameCount / this.frameSpeed);
 
@@ -86,7 +86,7 @@ class Player{
       pop();
 
     } else if (this.spriteState === "JUMP"){
-      this.frameCount = 0;
+      this.frameCount = 0;//MAKE THIS HAPPEN ONLY ONCE!!!!!!!!!!!!!!!!!!!!!!!!
       frameMultiplier = this.playerSprites.jump.length - 1;
       currentFrame = floor(this.frameCount / this.frameSpeed);
 
