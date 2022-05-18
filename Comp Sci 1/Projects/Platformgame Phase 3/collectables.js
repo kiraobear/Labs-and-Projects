@@ -1,3 +1,7 @@
+//Ricardo & Kira & Emma & Maddie
+//Company Name: Truett Cathy
+//Chick - Fi - Lost
+
 //Start Class Collectable##########
 class Collectable{
   constructor(x, y, l, w){

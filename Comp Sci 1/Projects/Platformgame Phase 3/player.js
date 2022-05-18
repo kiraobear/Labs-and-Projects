@@ -1,3 +1,8 @@
+//Ricardo & Kira & Emma & Maddie
+//Company Name: Truett Cathy
+//Chick - Fi - Lost
+
+//Start Class Player##########
 class Player{
   constructor(x, y){
     this.loc = createVector(x ,y);
@@ -12,8 +17,15 @@ class Player{
     //****** jump power for player *****
     this.jumpForce = 3.5;
 
+    //Becomes An Object Containing Each Separate Animation#####
     this.playerSprites = this.loadSprites();
+    //Frame Index#####
     this.frameCount = 0;
+    this.frameSpeed = 12;
+    //Identifier For The Animation Which Will Be Used#####
+    //Changed In Platform Class#####
+    //JUMP Sprite State Changed In Jump Function below#####
+    this.spriteState = "IDLE";
 
   }
 
@@ -45,12 +57,41 @@ class Player{
   }
 
   render(){
-    push();
-    imageMode(CENTER);
-    image(this.playerSprites.idle[floor(this.frameCount / 15)], this.loc.x, this.loc.y, this.lngth, this.wdth);
-    pop();
+    //Will Equal The Sprite Animation Length(Minus 1) In Use
+    //To Ensure The Animation Run In A Loop#####
+    let frameMultiplier = 0;
 
-    if (this.frameCount >= 60) this.frameCount = 0;
+    if (this.spriteState === "IDLE"){
+      frameMultiplier = this.playerSprites.idle.length - 1;
+
+      push();
+      imageMode(CENTER);
+      image(this.playerSprites.idle[floor(this.frameCount / this.frameSpeed)], this.loc.x, this.loc.y, this.lngth, this.wdth);
+      pop();
+
+    } else if (this.spriteState === "WALK"){
+      frameMultiplier = this.playerSprites.walk.length - 1;
+
+      push();
+      imageMode(CENTER);
+      image(this.playerSprites.idle[floor(this.frameCount / this.frameSpeed)], this.loc.x, this.loc.y, this.lngth, this.wdth);
+      pop();
+
+    } else if (this.spriteState === "JUMP"){
+      frameMultiplier = this.playerSprites.jump.length - 1;
+
+      push();
+      imageMode(CENTER);
+      image(this.playerSprites.idle[floor(this.frameCount / this.frameSpeed)], this.loc.x, this.loc.y, this.lngth, this.wdth);
+      pop();
+
+    }
+
+    //Reset Animation#####
+    if (this.frameCount >= this.frameSpeed * frameMultiplier){
+      this.frameCount = 0;
+
+    }
     this.frameCount++;
 
     //Checking Bounds#####
@@ -82,9 +123,16 @@ class Player{
 
   jump(){
     //***** change y velocity if jump & player still has jumps left *****
-    if (this.jumpCount > 0) this.vel.y = -this.jumpForce;
+    if (this.jumpCount > 0){
+      this.vel.y = -this.jumpForce;
+      //Player Now Jumping#####
+      this.spriteState = "JUMP";
+      
+    }
+
     this.jumpCount--;
 
   }
 
 }
+//End Class Player##########

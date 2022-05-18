@@ -1,3 +1,8 @@
+//Ricardo & Kira & Emma & Maddie
+//Company Name: Truett Cathy
+//Chick - Fi - Lost
+
+//Start Class Parallax##########
 class Parallax{
     constructor(i){
         this.img = loadImage("art/backgrounds/field/bgf" + i + ".png");
@@ -54,3 +59,4 @@ class Parallax{
 
     }
 }
+//End Class Parallax##########
