@@ -92,18 +92,19 @@ class Platform{
       //***** if the arrow key is down make x velocity speed variable *****
       if (keyIsDown(LEFT_ARROW) || keyIsDown(65)){
         this.vel.x = chickFiLost.player.speed;
-
+        
         //Player Now Walking#####
         chickFiLost.player.spriteState = "WALK";
 
       } else if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)){
         this.vel.x = -chickFiLost.player.speed;
-
+        
         //Player Now Walking#####
         chickFiLost.player.spriteState = "WALK";
 
       } else {
         this.vel.x = 0;
+        
         //Player Now IDLE##########
         chickFiLost.player.spriteState = "IDLE";
 

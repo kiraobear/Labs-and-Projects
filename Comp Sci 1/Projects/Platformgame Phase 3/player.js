@@ -60,29 +60,39 @@ class Player{
     //Will Equal The Sprite Animation Length(Minus 1) In Use
     //To Ensure The Animation Run In A Loop#####
     let frameMultiplier = 0;
+    //Current Frame Of Animation#####
+    //Will Be this.frameCount / this.frameSpeed#####
+    //OH And OFC We Floor It#####
+    let currentFrame = 0;
 
     if (this.spriteState === "IDLE"){
+      this.frameCount = 0;
       frameMultiplier = this.playerSprites.idle.length - 1;
+      currentFrame = floor(this.frameCount / this.frameSpeed);
 
       push();
       imageMode(CENTER);
-      image(this.playerSprites.idle[floor(this.frameCount / this.frameSpeed)], this.loc.x, this.loc.y, this.lngth, this.wdth);
+      image(this.playerSprites.idle[currentFrame], this.loc.x, this.loc.y, this.lngth, this.wdth);
       pop();
 
     } else if (this.spriteState === "WALK"){
+      this.frameCount = 0;
       frameMultiplier = this.playerSprites.walk.length - 1;
+      currentFrame = floor(this.frameCount / this.frameSpeed);
 
       push();
       imageMode(CENTER);
-      image(this.playerSprites.idle[floor(this.frameCount / this.frameSpeed)], this.loc.x, this.loc.y, this.lngth, this.wdth);
+      image(this.playerSprites.walk[currentFrame], this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
       pop();
 
     } else if (this.spriteState === "JUMP"){
+      this.frameCount = 0;
       frameMultiplier = this.playerSprites.jump.length - 1;
+      currentFrame = floor(this.frameCount / this.frameSpeed);
 
       push();
       imageMode(CENTER);
-      image(this.playerSprites.idle[floor(this.frameCount / this.frameSpeed)], this.loc.x, this.loc.y, this.lngth, this.wdth);
+      image(this.playerSprites.jump[currentFrame], this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
       pop();
 
     }
@@ -129,7 +139,7 @@ class Player{
       this.spriteState = "JUMP";
       
     }
-
+    
     this.jumpCount--;
 
   }
