@@ -19,13 +19,12 @@ class Player{
 
     //Becomes An Object Containing Each Separate Animation#####
     this.playerSprites = this.loadSprites();
-    //Frame Index#####
-    this.frameCount = 0;
-    this.frameSpeed = 12;
     //Identifier For The Animation Which Will Be Used#####
-    //Changed In Platform Class#####
-    //JUMP Sprite State Changed In Jump Function below#####
-    this.spriteState = "IDLE";
+    this.playerState = "IDLE";
+    //Both Used To Create Frame Index#####
+    this.frameCount = 0;
+    //The Lower The Speed The Faster#####
+    this.frameSpeed = 12;
 
   }
 
@@ -57,45 +56,11 @@ class Player{
   }
 
   render(){
-    //Will Equal The Sprite Animation Length(Minus 1) In Use
-    //To Ensure The Animation Run In A Loop#####
+    //Will Equal The Sprite Animation Length(Minus 1)#####
+    //Used To Ensure The Animation Runs In A Loop#####
     let frameMultiplier = 0;
     //Current Frame Of Animation#####
-    //Will Be this.frameCount / this.frameSpeed#####
-    //OH And OFC We Floor It#####
-    let currentFrame = 0;
-
-    if (this.spriteState === "IDLE"){
-      this.frameCount = 0;//MAKE THIS HAPPEN ONLY ONCE!!!!!!!!!!!!!!!!!!!!!!!!
-      frameMultiplier = this.playerSprites.idle.length - 1;
-      currentFrame = floor(this.frameCount / this.frameSpeed);
-
-      push();
-      imageMode(CENTER);
-      image(this.playerSprites.idle[currentFrame], this.loc.x, this.loc.y, this.lngth, this.wdth);
-      pop();
-
-    } else if (this.spriteState === "WALK"){
-      this.frameCount = 0;//MAKE THIS HAPPEN ONLY ONCE!!!!!!!!!!!!!!!!!!!!!!!!
-      frameMultiplier = this.playerSprites.walk.length - 1;
-      currentFrame = floor(this.frameCount / this.frameSpeed);
-
-      push();
-      imageMode(CENTER);
-      image(this.playerSprites.walk[currentFrame], this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
-      pop();
-
-    } else if (this.spriteState === "JUMP"){
-      this.frameCount = 0;//MAKE THIS HAPPEN ONLY ONCE!!!!!!!!!!!!!!!!!!!!!!!!
-      frameMultiplier = this.playerSprites.jump.length - 1;
-      currentFrame = floor(this.frameCount / this.frameSpeed);
-
-      push();
-      imageMode(CENTER);
-      image(this.playerSprites.jump[currentFrame], this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
-      pop();
-
-    }
+    let currentFrame = this.frameCount / this.frameSpeed;
 
     //Reset Animation#####
     if (this.frameCount >= this.frameSpeed * frameMultiplier){
@@ -137,9 +102,9 @@ class Player{
       this.vel.y = -this.jumpForce;
       //Player Now Jumping#####
       this.spriteState = "JUMP";
-      
+
     }
-    
+
     this.jumpCount--;
 
   }
