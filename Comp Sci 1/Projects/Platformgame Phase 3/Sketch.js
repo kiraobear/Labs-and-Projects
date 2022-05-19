@@ -26,3 +26,19 @@ function keyPressed(){
   }
   
 }
+
+function keyTyped(){
+  if(keyTyped(UP_ARROW) || keyTyped(32) || keyTyped(87)){
+    this.playerState = "JUMP"
+
+  } else if(keyTyped(RIGHT_ARROW) || keyTyped(68)){
+    this.playerState = "WALK"
+
+  } else if(keyTyped(LEFT_ARROW) || keyTyped(65)){
+    this.playerState = "WALK"
+
+  } else {
+    this.playerState = "IDLE"
+    
+  }
+}
