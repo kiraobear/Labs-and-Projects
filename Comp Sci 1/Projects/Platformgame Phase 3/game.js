@@ -18,45 +18,52 @@ class Game{
     //pL --> platform Length#####
     //bL --> background length#####
 
-    // this.loadingScreen(pL, bL);
+    do{
+      this.loadingScreen(pL, bL);
 
-    this.player = new Player(200, 0);
+      this.player = new Player(200, 0);
 
-    for (let i = 0; i < pL; i++){
-      this.platforms[i] = new Platform(i * 80);
+      for (let i = 0; i < pL; i++){
+        this.platforms[i] = new Platform(i * 80);
 
-    }
+      }
 
-    for (let i = 0; i < bL; i++){
-      this.background[i] = new Parallax(i);
+      for (let i = 0; i < bL; i++){
+        this.background[i] = new Parallax(i);
 
-    }
+      }
+
+    } while (!this.player ||
+      this.platforms.length !== pL ||
+      this.background.length !== bL);
+
+    this.gameState = "PLAY";
 
   }
 
   loadingScreen(pL, bL){
     background(0);
-    while (!this.player ||
-      this.platforms.length !== pL ||
-      this.background.length !== bL){
 
-        push();
-        noStroke();
-        fill(255);
-        textAlign(CENTER, CENTER);
-        textStyle(ITALIC);
-        textSize(200);
-        text("LOADING", width / 2, height / 2);
-        pop();
-
-      }
+    push();
+    noStroke();
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textStyle(BOLDITALIC);
+    textSize(150);
+    text("LOADING", width / 2, height / 2);
+    pop();
 
   }
 
   run(){
-    if (this.gameState === "INTRO"){
+    if (this.gameState === "INIT"){
+      // this.loadingScreen(25, 5);
+
+    } else if (this.gameState === "INTRO"){
 
     } else if (this.gameState === "PLAY"){
+      this.render();
+      this.update();
 
     } else if (this.gameState === "OUTRO"){
 
