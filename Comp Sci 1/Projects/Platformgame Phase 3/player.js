@@ -10,6 +10,7 @@ class Player{
     this.acc = createVector(0, 0.08);
     this.lngth = 59;
     this.wdth = 65;
+    this.health = 3;
     this.immobile = true;
     this.jumpCount = 0;
     //***** speed for platforms *****
@@ -23,11 +24,14 @@ class Player{
     this.playerState = "IDLE";
     //Used To Detect A Change In Player State#####
     this.oldState = "IDLE";
+    //Used For Changing Player Sprite Facing Direction#####
+    this.direction = "n/a";
     //Both Used To Create Frame Index#####
     this.frameCount = 0;
     //The Lower The Speed The Faster#####
     this.frameSpeed = 12;
 
+    this.isDead = false;
   }
 
   loadSprites(){
@@ -68,14 +72,31 @@ class Player{
     imageMode(CENTER);
     if (this.playerState === "JUMP"){
       frameLength = this.playerSprites.jump.length - 1;
+
+      if (this.direction === "LEFT"){
+        //***** flips image if the direction is left*****
+        scale(-1, 1);
+        image(this.playerSprites.jump[currentFrame], -this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
+      
+      }
+
       image(this.playerSprites.jump[currentFrame], this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
 
     } else if (this.playerState === "WALK"){
       frameLength = this.playerSprites.walk.length - 1;
+
+      if (this.direction === "LEFT"){
+        //***** flips image if the direction is left*****
+        scale(-1, 1);
+        image(this.playerSprites.walk[currentFrame], -this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
+
+      }
+
       image(this.playerSprites.walk[currentFrame], this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
 
     } else if (this.playerState === "IDLE") {
       frameLength = this.playerSprites.idle.length - 1;
+
       image(this.playerSprites.idle[currentFrame], this.loc.x, this.loc.y, this.lngth, this.wdth);
 
     }
@@ -105,6 +126,21 @@ class Player{
 
   }
 
+  update(){
+    this.gravity();
+    this.changeSprite();
+    this.checkDamage();
+    this.isDead = (this.health <= 0) ? true : false;
+
+  }
+  
+  gravity(){
+    this.vel.limit(4);
+    this.vel.add(this.acc);
+    this.loc.add(this.vel);
+    
+  }
+  
   changeSprite(){
     if (!this.immobile){
       //*****change sprite state when keypressed*****
@@ -116,12 +152,16 @@ class Player{
 
         }
 
+        this.direction = "RIGHT";
+
       } else if(keyIsDown(LEFT_ARROW) || keyIsDown(65)){
         if (this.playerState !== "JUMP"){
           this.oldState = this.playerState;
           this.playerState = "WALK";
 
         }
+
+        this.direction = "LEFT";
 
       } else {
         if (this.playerState !== "JUMP"){
@@ -146,17 +186,13 @@ class Player{
 
   }
 
-  update(){
-    this.gravity();
-    this.changeSprite();
+  checkDamage(){
+    if (this.loc.y >= height){
+      //Just To Make Sure The Chick Is Dead##### :)
+      this.health -= 100;
 
-  }
-
-  gravity(){
-    this.vel.limit(4);
-    this.vel.add(this.acc);
-    this.loc.add(this.vel);
-
+    }
+    
   }
 
 

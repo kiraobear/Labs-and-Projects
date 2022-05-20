@@ -12,14 +12,15 @@ class Game{
 
     this.init(25, 5);
 
+    this.buttons;
   }
 
   init(pL, bL){
     //pL --> platform Length#####
     //bL --> background length#####
 
-    do{
-      this.loadingScreen(pL, bL);
+    this.buttons = new Button(600, 600, 100, 100, "Instructions");
+      this.loadingScreen();
 
       this.player = new Player(200, 0);
 
@@ -33,15 +34,11 @@ class Game{
 
       }
 
-    } while (!this.player ||
-      this.platforms.length !== pL ||
-      this.background.length !== bL);
-
     this.gameState = "PLAY";
 
   }
 
-  loadingScreen(pL, bL){
+  loadingScreen(){
     background(0);
 
     push();
@@ -56,14 +53,13 @@ class Game{
   }
 
   run(){
-    if (this.gameState === "INIT"){
-      // this.loadingScreen(25, 5);
-
-    } else if (this.gameState === "INTRO"){
+    if (this.gameState === "INTRO"){
+      this.renderIntro();
+      this.updateIntro();
 
     } else if (this.gameState === "PLAY"){
-      this.render();
-      this.update();
+      this.renderPlay();
+      this.updatePlay();
 
     } else if (this.gameState === "OUTRO"){
 
@@ -85,7 +81,17 @@ class Game{
 
   }
 
-  render(){
+  renderIntro(){
+    this.buttons.render();
+
+  }
+
+  updateIntro(){
+    this.buttons.update();
+
+  }
+
+  renderPlay(){
     //Backwords Loop Bc Of Image Order#####
     for (let i = this.background.length - 1; i >= 0; i--){
       this.background[i].render();
@@ -102,7 +108,7 @@ class Game{
 
   }
 
-  update(){
+  updatePlay(){
     for (let i = this.background.length - 1; i >= 0; i--){
       this.background[i].update();
 
