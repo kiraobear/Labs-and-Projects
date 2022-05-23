@@ -8,19 +8,18 @@ class Game{
     this.player;
     this.platforms = [];
     this.background = [];
-    this.gameState = "INIT";
+    this.gameState = "INTRO";
+    this.buttons = ;
 
     this.init(25, 5);
 
-    this.buttons;
   }
 
   init(pL, bL){
     //pL --> platform Length#####
     //bL --> background length#####
 
-    this.buttons = new Button(600, 600, 100, 100, "Instructions");
-      this.loadingScreen();
+    this.loadingScreen();
 
       this.player = new Player(200, 0);
 
@@ -34,7 +33,7 @@ class Game{
 
       }
 
-    this.gameState = "PLAY";
+    this.gameState = "INTRO";
 
   }
 
@@ -61,6 +60,8 @@ class Game{
       this.renderPlay();
       this.updatePlay();
 
+      if (this.player.isDead) this.gameState = "OUTRO";
+
     } else if (this.gameState === "OUTRO"){
 
     } else if (this.gameState === "INTRUCTIONS"){
@@ -82,12 +83,12 @@ class Game{
   }
 
   renderIntro(){
-    this.buttons.render();
+    // this.buttons.render();
 
   }
 
   updateIntro(){
-    this.buttons.update();
+    // this.buttons.update();
 
   }
 

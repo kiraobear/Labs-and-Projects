@@ -38,22 +38,34 @@ class Player{
     let spriteTypes = {
       idle : [],
       walk : [],
-      jump : []
+      jump : [],
+      hurt : [],
+      dead : []
 
     };
 
     for (let i = 0; i < 4; i++){
-      spriteTypes.idle[i] = loadImage("art/sprites/idle/hi" + i + ".png")
+      spriteTypes.idle[i] = loadImage("art/sprites/player/idle/hi" + i + ".png")
 
     }
 
     for (let i = 0; i < 5; i++){
-      spriteTypes.walk[i] = loadImage("art/sprites/walking/hw" + i + ".png")
+      spriteTypes.walk[i] = loadImage("art/sprites/player/walking/hw" + i + ".png")
 
     }
 
-    for (let i = 0; i < 4; i++){
-      spriteTypes.jump[i] = loadImage("art/sprites/jumping/hj" + i + ".png")
+    for (let i = 0; i < 3; i++){
+      spriteTypes.jump[i] = loadImage("art/sprites/player/jumping/hj" + i + ".png")
+
+    }
+
+    for (let i = 0; i < 3; i++){
+      spriteTypes.hurt[i] = loadImage("art/sprites/player/hurt/hh" + i + ".png")
+
+    }
+
+    for (let i = 0; i < 6; i++){
+      spriteTypes.dead[i] = loadImage("art/sprites/player/dead/hd" + i + ".png")
 
     }
 
@@ -77,7 +89,7 @@ class Player{
         //***** flips image if the direction is left*****
         scale(-1, 1);
         image(this.playerSprites.jump[currentFrame], -this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
-      
+
       }
 
       image(this.playerSprites.jump[currentFrame], this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
@@ -111,19 +123,6 @@ class Player{
     }
     this.frameCount++;
 
-    //Checking Bounds#####
-    //Delete When Finished#####
-    push();
-    stroke(255, 0, 0);
-    strokeWeight(3);
-    point(this.loc.x, this.loc.y + (this.wdth / 8));
-    pop();
-
-    push();
-    stroke(0, 255, 0);
-    line(this.loc.x - 20, this.loc.y + (this.wdth / 2), this.loc.x + 20, this.loc.y + (this.wdth / 2));
-    pop();
-
   }
 
   update(){
@@ -133,14 +132,14 @@ class Player{
     this.isDead = (this.health <= 0) ? true : false;
 
   }
-  
+
   gravity(){
     this.vel.limit(4);
     this.vel.add(this.acc);
     this.loc.add(this.vel);
-    
+
   }
-  
+
   changeSprite(){
     if (!this.immobile){
       //*****change sprite state when keypressed*****
@@ -149,6 +148,7 @@ class Player{
         if (this.playerState !== "JUMP"){
           this.oldState = this.playerState;
           this.playerState = "WALK";
+          this.frameSpeed = 7;
 
         }
 
@@ -158,6 +158,7 @@ class Player{
         if (this.playerState !== "JUMP"){
           this.oldState = this.playerState;
           this.playerState = "WALK";
+          this.frameSpeed = 7;
 
         }
 
@@ -167,6 +168,7 @@ class Player{
         if (this.playerState !== "JUMP"){
           this.oldState = this.playerState;
           this.playerState = "IDLE";
+          this.frameSpeed = 12;
 
         }
 
@@ -192,7 +194,7 @@ class Player{
       this.health -= 100;
 
     }
-    
+
   }
 
 
@@ -210,6 +212,7 @@ class Player{
       //The Frame Restart In The changeSprite Function Above#####
       //Wont Work For Jump Unless You Jump Both Times#####
       this.frameCount = 0;
+      this.frameSpeed = 10;
 
     }
 
