@@ -10,7 +10,7 @@ function setup() {
 
   chickFiLost = new Game();
 
-  // frameRate(5);
+  //frameRate(5);
 
 }
 

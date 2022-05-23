@@ -9,7 +9,10 @@ class Game{
     this.platforms = [];
     this.background = [];
     this.gameState = "INTRO";
-    this.buttons = ;
+    //***** button objects ***** 
+    this.playBtn;
+    this.instructionBtn;
+    this.settingBtn;
 
     this.init(25, 5);
 
@@ -20,6 +23,11 @@ class Game{
     //bL --> background length#####
 
     this.loadingScreen();
+
+    this.playBtn = new Butt(600, 600, 150, 20, 0, "Play");//haha butt
+    this.instructionBtn = new Butt(200, 600, 150, 20, 0, "Instructions");
+    this.settingBtn = new Butt(600, 200, 150, 20, 50, "Settings");
+    
 
       this.player = new Player(200, 0);
 
@@ -83,12 +91,16 @@ class Game{
   }
 
   renderIntro(){
-    // this.buttons.render();
+    //  this.playBtn.render();
+     this.instructionBtn.render();
+    //  this.settingBtn.render();
 
   }
 
   updateIntro(){
-    // this.buttons.update();
+    //  this.playBtn.update();
+     this.instructionBtn.update();
+    //  this.settingBtn.update();
 
   }
 
