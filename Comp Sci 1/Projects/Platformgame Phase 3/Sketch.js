@@ -27,4 +27,10 @@ function keyPressed(){
 
   }
 
+  function mousePressed(){
+    if (chickFiLost.butts.play.ratOverButt){
+      console.log("PLAY TIME :)");
+    }
+  }
+
 }

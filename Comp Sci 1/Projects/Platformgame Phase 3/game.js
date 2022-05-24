@@ -10,9 +10,7 @@ class Game{
     this.background = [];
     this.gameState = "INTRO";
     //***** button objects ***** 
-    this.playBtn;
-    this.instructionBtn;
-    this.settingBtn;
+    this.butts;
 
     this.init(25, 5);
 
@@ -24,10 +22,12 @@ class Game{
 
     this.loadingScreen();
 
-    this.playBtn = new Butt(600, 600, 150, 20, 0, "Play");//haha butt
-    this.instructionBtn = new Butt(200, 600, 150, 20, 0, "Instructions");
-    this.settingBtn = new Butt(600, 200, 150, 20, 50, "Settings");
-    
+    this.butts = {
+      play : new Butt(200, 500, 100, 50, 0, "Play"), 
+      instructions : new Butt(420, 500, 100, 25, 100, "Instructions"), 
+      settings : new Butt(690, 500, 100, 50, 100, "Settings")
+
+    };
 
       this.player = new Player(200, 0);
 
@@ -91,16 +91,18 @@ class Game{
   }
 
   renderIntro(){
-    //  this.playBtn.render();
-     this.instructionBtn.render();
-    //  this.settingBtn.render();
+    for (let i in this.butts){
+      this.butts[i].render();
+
+    }
 
   }
 
   updateIntro(){
-    //  this.playBtn.update();
-     this.instructionBtn.update();
-    //  this.settingBtn.update();
+    for (let i in this.butts){
+      this.butts[i].update();
+
+    }
 
   }
 

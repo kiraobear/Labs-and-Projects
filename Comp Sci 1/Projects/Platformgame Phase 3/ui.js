@@ -1,4 +1,4 @@
-//Start class button
+//Start class Butt##########
 class Butt{
     constructor(x, y, l, w, rndness, msg){
         this.loc = createVector(x, y);
@@ -13,22 +13,22 @@ class Butt{
             bottom : this.loc.y + this.wdth
 
         };
-        this.mouseOverButt = this.checkBounds();
+        this.ratOverButt = this.checkBounds();
         
     }
 
     update(){
-        this.mouseOverButt = this.checkBounds();
-        
+        this.ratOverButt = this.checkBounds();
+
     }
 
     checkBounds(){
         //***** rat location is mouse location ***** 
-        let ratY = mouseY;
         let ratX = mouseX;
+        let ratY = mouseY;
         
         if (ratX >= this.bounds.left &&
-            ratY <= this.bounds.right &&
+            ratX <= this.bounds.right &&
             ratY >= this.bounds.top &&
             ratY <= this.bounds.bottom){
                 return true;
@@ -40,10 +40,10 @@ class Butt{
     }
 
     render(){
-        let clr = this.mouseOverButt ?  color(0, 255, 0) : color(255, 0, 0);
+        let clr = this.ratOverButt ?  color(0, 255, 0) : color(255, 0, 0);
         fill(clr);
         rect(this.loc.x, this.loc.y, this.lngth, this.wdth, this.rndness);
         
     }
 }
-//End class button
+//End class Butt##########
