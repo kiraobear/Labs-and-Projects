@@ -34,7 +34,7 @@ class Game{
     this.player = new Player(200, 0);
 
     for (let i = 0; i < pL; i++){
-      this.platforms[i] = new Platform(i * 80);
+      this.platforms[i] = new Platform(i * 90);
 
     }
 
@@ -169,6 +169,13 @@ class Game{
 
   renderInstructions(){
     background(0);
+    push();
+    fill(255, 0, 0);
+    textAlign(CENTER, CENTER);
+    textStyle(BOLDITALIC);
+    textSize(100);
+    text('UNDER DEV', width / 2, height / 2)
+    pop();
 
   }
 
@@ -176,6 +183,14 @@ class Game{
 
   renderSettings(){
     background(0);
+    push();
+    fill(255, 0, 0);
+    textAlign(CENTER, CENTER);
+    textStyle(BOLDITALIC);
+    textSize(100);
+    text('UNDER DEV', width / 2, height / 2)
+    pop();
+
   }
 
   updateSettings(){}

@@ -8,7 +8,8 @@ class Platform{
     this.img = loadImage("art/platform/p0.png");
     this.loc = createVector(x, floor(random(height * 0.25, height - (height * 0.25))));
     this.vel = createVector(0, 0);
-    this.lngth = floor(random(50, 100));
+    // this.lngth = floor(random(50, 100));
+    this.lngth = floor(random(50, 150));
     this.wdth = 15;
     //Platform Bounds#####
     this.bounds = {
@@ -37,7 +38,8 @@ class Platform{
 
     } else if (this.type > 0.4 && this.type <= 0.7){
       // console.log("ENEMY");
-      this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
+      this.entity = new Enemy(this.loc.x, this.loc.y, this.bounds.left, this.bounds.right);
+      // this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.7 && this.type <= 0.9){
       // console.log("TRAP");
