@@ -7,9 +7,11 @@ class Game{
   constructor(){
     this.player;
     this.platforms = [];
-    this.background = [];
+    this.introBackground;
+    this.playBackground = [];
+    this.outroBackground;
     this.gameState = "INTRO";
-    //***** button objects ***** 
+    //***** button object *****
     this.butts;
 
     this.init(25, 5);
@@ -23,23 +25,27 @@ class Game{
     this.loadingScreen();
 
     this.butts = {
-      play : new Butt(200, 500, 100, 50, 0, "Play"), 
-      instructions : new Butt(420, 500, 100, 25, 100, "Instructions"), 
-      settings : new Butt(690, 500, 100, 50, 100, "Settings")
+      play : new Butt(250, 590, 100, 50, "PLAY"),
+      instructions : new Butt(650, 570, 100, 50, "INSTRUCTIONS"),
+      settings : new Butt(875, 25, 25, 25, "SETTINGS")
 
     };
 
-      this.player = new Player(200, 0);
+    this.player = new Player(200, 0);
 
-      for (let i = 0; i < pL; i++){
-        this.platforms[i] = new Platform(i * 80);
+    for (let i = 0; i < pL; i++){
+      this.platforms[i] = new Platform(i * 80);
 
-      }
+    }
 
-      for (let i = 0; i < bL; i++){
-        this.background[i] = new Parallax(i);
+    this.introBackground = loadImage("art/titleScreens/intro/bg.png");
 
-      }
+    for (let i = 0; i < bL; i++){
+      this.playBackground[i] = new Parallax(i);
+
+    }
+
+    this.outroBackground = loadImage("art/titleScreens/outro/bg.png");
 
     this.gameState = "INTRO";
 
@@ -71,12 +77,18 @@ class Game{
       if (this.player.isDead) this.gameState = "OUTRO";
 
     } else if (this.gameState === "OUTRO"){
+      this.renderOutro();
+      this.updateOutro();
 
-    } else if (this.gameState === "INTRUCTIONS"){
+    } else if (this.gameState === "INSTRUCTIONS"){
+      this.renderInstructions();
+      this.updateInstructions();
 
     } else if (this.gameState === "SETTINGS"){
+      this.renderSettings();
+      this.updateSettings();
 
-    } else if (this.gameState !== "INIT"){
+    } else{
       background(0);
       push();
       noStroke();
@@ -86,11 +98,18 @@ class Game{
       textSize(200);
       text("ERROR", width / 2, height / 2);
       pop();
+
     }
 
   }
 
   renderIntro(){
+    push();
+    image(this.introBackground, 0, 0);
+    pop();
+
+    //For In Loop#####
+    //Loops Through The Properties Of An Object#####
     for (let i in this.butts){
       this.butts[i].render();
 
@@ -99,6 +118,7 @@ class Game{
   }
 
   updateIntro(){
+    //For In Loop#####
     for (let i in this.butts){
       this.butts[i].update();
 
@@ -108,8 +128,8 @@ class Game{
 
   renderPlay(){
     //Backwords Loop Bc Of Image Order#####
-    for (let i = this.background.length - 1; i >= 0; i--){
-      this.background[i].render();
+    for (let i = this.playBackground.length - 1; i >= 0; i--){
+      this.playBackground[i].render();
 
     }
 
@@ -124,8 +144,8 @@ class Game{
   }
 
   updatePlay(){
-    for (let i = this.background.length - 1; i >= 0; i--){
-      this.background[i].update();
+    for (let i = this.playBackground.length - 1; i >= 0; i--){
+      this.playBackground[i].update();
 
     }
 
@@ -137,6 +157,28 @@ class Game{
     }
 
   }
+
+  renderOutro(){
+    push();
+    image(this.outroBackground, 0, 0);
+    pop();
+
+  }
+
+  updateOutro(){}
+
+  renderInstructions(){
+    background(0);
+
+  }
+
+  updateInstructions(){}
+
+  renderSettings(){
+    background(0);
+  }
+
+  updateSettings(){}
 
 }
 //End Class Game##########

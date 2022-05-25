@@ -177,12 +177,7 @@ class Player{
     }
 
     if (this.oldState !== this.playerState){
-      console.log("");
-      console.log("Old State: " + this.oldState);
-      console.log("Current State: " + this.playerState);
-      console.log("Current Frame: " + (floor(this.frameCount / this.frameSpeed)));
       this.frameCount = 0;
-      console.log("Frame Count Reset");
 
     }
 
