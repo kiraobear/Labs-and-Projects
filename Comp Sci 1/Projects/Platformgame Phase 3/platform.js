@@ -20,6 +20,7 @@ class Platform{
       right : this.loc.x + this.lngth
 
     };
+    this.collectableCount = 0;
 
     //Type Of Platform#####
     //30% Seed, 0 - 0.3#####
@@ -30,20 +31,20 @@ class Platform{
     this.type = round(random(0, 1), 1);
     if (this.type <= 0.3){
       // console.log("SEED");
-      this.entity = new Seed(this.loc.x, this.loc.y - 50, 20, 40);
+      this.entity = ["SEED", new Seed(this.loc.x, this.loc.y - 50, 20, 40)];
 
     } else if (this.type > 0.3 && this.type <= 0.4){
       // console.log("FEATHER");
-      this.entity = new Feather(this.loc.x, this.loc.y - 60, 20, 50);
+      this.entity = ["FEATHER", new Feather(this.loc.x, this.loc.y - 60, 20, 50)];
 
     } else if (this.type > 0.4 && this.type <= 0.7){
       // console.log("ENEMY");
-      this.entity = new Enemy(this.loc.x, this.loc.y, this.lngth);
+      this.entity = ["ENEMY", new Enemy(this.loc.x, this.loc.y, this.lngth)];
       // this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.7 && this.type <= 0.9){
       // console.log("TRAP");
-      this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
+      this.entity = ["TRAP", new Seed(this.loc.x, this.loc.y - 30, 20, 20)];
 
     } else if (this.type > 0.9){
       // console.log("NONE");
@@ -66,7 +67,7 @@ class Platform{
 
     //Entity Function#####
     if (this.entity){
-      this.entity.render();
+      this.entity[1].render();
 
     }
 
@@ -80,9 +81,17 @@ class Platform{
 
     //Entity Function#####
     if (this.entity){
-      this.entity.update(this.loc.x, this.lngth, this.bounds.left, this.bounds.right);
+      this.entity[1].update(this.loc.x, this.lngth, this.bounds.left, this.bounds.right);
 
-      if (this.entity.playerDetected) this.entity = 0;
+      if (this.entity[1].playerDetected) {
+        if (this.entity[0] === "FEATHER"){
+          chickFiLost.player.speedBoostTimer = 60;
+          
+        }
+
+        this.entity = 0;
+
+      }
 
     }
 
@@ -140,6 +149,8 @@ class Platform{
         chickFiLost.player.vel.y = 0;
         //Resets Player Jumps#####
         chickFiLost.player.jumpCount = 2;
+
+
       }
 
     }

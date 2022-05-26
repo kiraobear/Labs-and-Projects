@@ -21,7 +21,7 @@ class Enemy{
         this.pLngth = pL;
 
         //****** collision detection with hero *****
-        this.playerDetected = /*this.playerDetection*/;
+        this.playerDetected /* = this.playerDetection;*/
         //ISSUE SOLVED
         //FOR SOME REASON THE PLAYER ISNT DEFENIED YET WHEN THE ENEMIES
         //ARE BEING MADE BUT AFTERWARDS IT IS
@@ -64,21 +64,24 @@ class Enemy{
     }
 
     playerDetection(){
-        //Player Location and Bounds#####
-    let playerX = chickFiLost.player.loc.x;
-    let playerY = chickFiLost.player.loc.y;
-    let playerWdthBound = chickFiLost.player.wdth / 2;
-    let playerLngthBound = chickFiLost.player.lngth / 2;
+       //Player Location and Bounds#####
+      let playerX = chickFiLost.player.loc.x;
+      let playerY = chickFiLost.player.loc.y;
+      let playerWdthBound = chickFiLost.player.wdth / 2;
+      let playerLngthBound = chickFiLost.player.lngth / 2;
 
-    if (playerY + playerWdthBound >= this.bounds.top &&
-      playerY - playerWdthBound <= this.bounds.bottom &&
-      playerX + playerLngthBound >= this.bounds.left &&
-      playerX - playerLngthBound <= this.bounds.right){
-                return true;
+      if (playerY + playerWdthBound >= this.bounds.top &&
+        playerY - playerWdthBound <= this.bounds.bottom &&
+        playerX + playerLngthBound >= this.bounds.left &&
+        playerX - playerLngthBound <= this.bounds.right){
 
-        }
+          chickFiLost.player.health--;
 
-        return false;
+          return true;
+
+          }
+
+      return false;
 
     }
 

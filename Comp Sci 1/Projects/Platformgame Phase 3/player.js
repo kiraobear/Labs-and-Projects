@@ -15,6 +15,8 @@ class Player{
     this.jumpCount = 0;
     //***** speed for platforms *****
     this.speed = 2;
+    this.speedBoost = 5;
+    this.speedBoostTimer = 0;
     //****** jump power for player *****
     this.jumpForce = 3.5;
 
@@ -128,7 +130,8 @@ class Player{
   update(){
     this.gravity();
     this.changeSprite();
-    this.checkDamage();
+    this.fallDamage();
+    this.applySpeedBoost();
     this.isDead = (this.health <= 0) ? true : false;
 
   }
@@ -183,7 +186,7 @@ class Player{
 
   }
 
-  checkDamage(){
+  fallDamage(){
     if (this.loc.y >= height){
       //Just To Make Sure The Chick Is Dead##### :)
       this.health -= 100;
@@ -192,6 +195,15 @@ class Player{
 
   }
 
+  applySpeedBoost(){
+      this.speed = this.speedBoost
+
+      if (this.speedBoostTimer-- <= 0){
+        this.speed = 2;
+
+      }
+
+  }
 
   jump(){
     //***** change y velocity if jump & player still has jumps left *****
