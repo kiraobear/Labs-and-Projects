@@ -1,47 +1,69 @@
 //Start Class Enemy##########
 class Enemy{
 
-    constructor(x, y, lftEdge, rghtEdge){
-        this.loc = createVector(x, y);
+    constructor(x, y, pL){
+        this.pLoc = createVector(x, y);
+        this.offSetLoc = createVector(pL / 2, y);
+        this.eLoc = createVector(this.pLoc.x + this.offSetLoc.x, y);
         this.vel = createVector(0.5, 0);
         this.lngth = 30;
         this.wdth = 30;
+
         //***** bounds for the enemey *****
         this.bounds = {
-            left : this.loc.x,
-            right : this.loc.x + this.lngth,
-            top : this.loc.y,
-            bottom : this.loc.y + this.wdth
+            left : this.eLoc.x,
+            right : this.eLoc.x + this.lngth,
+            top : this.eLoc.y,
+            bottom : this.eLoc.y + this.wdth
 
         };
-        
-        this.lftEdge = lftEdge;
-        this.rghtEdge = rghtEdge;
+
+        this.pLngth = pL;
 
         //****** collision detection with hero *****
-        // this.isColliding = this.colliding();
+        this.playerDetected = /*this.playerDetection*/;
+        //ISSUE SOLVED
+        //FOR SOME REASON THE PLAYER ISNT DEFENIED YET WHEN THE ENEMIES
+        //ARE BEING MADE BUT AFTERWARDS IT IS
 
     }
 
-    update(){
-        this.move();
-        // this.isColliding = this.colliding();
+    render(){
+      ellipse(this.eLoc.x, this.eLoc.y, this.lngth, this.wdth);
 
     }
-    
+
+    update(pX){
+      this.move(pX);
+      this.updateBounds();
+      this.playerDetected = this.playerDetection();
+
+    }
+
     move(pX){
-        this.loc.x = pX;
-        this.loc.add(this.vel);
-        
-        //***** check location to platform bounds and change vel *****
-        if (this.loc.x <= this.lftEdge || this.loc.x >= this.rghtEdge){
-            this.vel.x = -this.vel.x;
-            
-        }
+      this.pLoc.x = pX;
+      this.offSetLoc.add(this.vel);
+
+      this.eLoc.x = this.pLoc.x + this.offSetLoc.x;
+
+      if (this.offSetLoc.x >= this.pLngth){
+        this.vel.x = -this.vel.x;
+
+      } else if (this.offSetLoc.x <= 0){
+        this.vel.x = -this.vel.x;
+
+      }
 
     }
-    
-    colliding(){
+
+    updateBounds(){
+      this.bounds.right = this.eLoc.x;
+      this.bounds.left = this.eLoc.x + this.lngth;
+      this.bounds.top = this.eLoc.y;
+      this.bounds.bottom = this.eLoc.y + this.wdth;
+    }
+
+    playerDetection(){
         //Player Location and Bounds#####
     let playerX = chickFiLost.player.loc.x;
     let playerY = chickFiLost.player.loc.y;
@@ -53,13 +75,12 @@ class Enemy{
       playerX + playerLngthBound >= this.bounds.left &&
       playerX - playerLngthBound <= this.bounds.right){
                 return true;
+
         }
-        
-    }
 
-    render(){
-        ellipse(this.loc.x, this.loc.y, this.lngth, this.wdth);
+        return false;
 
     }
+
 }
 //End Class Enemy##########

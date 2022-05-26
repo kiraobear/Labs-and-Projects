@@ -38,7 +38,7 @@ class Platform{
 
     } else if (this.type > 0.4 && this.type <= 0.7){
       // console.log("ENEMY");
-      this.entity = new Enemy(this.loc.x, this.loc.y, this.bounds.left, this.bounds.right);
+      this.entity = new Enemy(this.loc.x, this.loc.y, this.lngth);
       // this.entity = new Seed(this.loc.x, this.loc.y - 30, 20, 20);
 
     } else if (this.type > 0.7 && this.type <= 0.9){
@@ -80,7 +80,7 @@ class Platform{
 
     //Entity Function#####
     if (this.entity){
-      this.entity.update(this.loc.x, this.lngth);
+      this.entity.update(this.loc.x, this.lngth, this.bounds.left, this.bounds.right);
 
       if (this.entity.playerDetected) this.entity = 0;
 
