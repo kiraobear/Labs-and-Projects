@@ -4,13 +4,13 @@
 
 //Start Class Game##########
 class Game{
-  constructor(){
+  constructor(startState){
     this.player;
     this.platforms = [];
     this.introBackground;
     this.playBackground = [];
     this.outroBackground;
-    this.gameState = "INTRO";
+    this.gameState = startState;
     this.prevGameState;
     //***** button object *****
     this.butts;

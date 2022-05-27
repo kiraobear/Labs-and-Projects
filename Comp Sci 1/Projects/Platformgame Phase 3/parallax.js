@@ -5,7 +5,7 @@
 //Start Class Parallax##########
 class Parallax{
   constructor(i){
-    this.img = loadImage("art/backgrounds/field 2nd/bg" + i + ".png");
+    this.img = loadImage("art/backgrounds/bg" + i + ".png");
     this.loc1 = createVector(0, 0);
     this.loc2 = createVector(width, 0);
     this.vel = createVector(5 / (i + 1), 0);

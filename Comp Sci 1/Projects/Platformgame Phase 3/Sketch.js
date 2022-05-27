@@ -15,7 +15,7 @@ function setup() {
   let cnv = createCanvas(900, 700);
   cnv.position((windowWidth - width) / 2, 30);
 
-  chickFiLost = new Game();
+  chickFiLost = new Game("INTRO");
 
   //frameRate(5);
 
@@ -54,9 +54,8 @@ function mousePressed(){
     chickFiLost.gameState = "INSTRUCTIONS";
 
   } else if (chickFiLost.butts.replay.ratOverButt){
-    chickFiLost.butts.replay.ratOverButt = false;
-    chickFiLost.init(25, 5, true);
-    // chickFiLost.gameState = "PLAY";
+    // chickFiLost.butts.replay.ratOverButt = false;
+    chickFiLost = new Game("PLAY");
 
   }
 
