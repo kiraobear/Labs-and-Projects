@@ -37,7 +37,7 @@ class Parallax{
     if (this.loc1.x < -width || this.loc1.x > width){
       this.loc1.x = 0;
       this.loc2.x = width;
-      
+
     }
 
     if (this.loc2.x > width){

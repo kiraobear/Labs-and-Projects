@@ -8,19 +8,17 @@ class Platform{
     this.img = loadImage("art/platform/p0.png");
     this.loc = createVector(x, floor(random(height * 0.25, height - (height * 0.25))));
     this.vel = createVector(0, 0);
-    // this.lngth = floor(random(50, 100));
     this.lngth = floor(random(50, 150));
     this.wdth = 15;
     //Platform Bounds#####
     this.bounds = {
       top : this.loc.y,
       //Half The Platform Height#####
-      lower : this.loc.y + (this.hght / 2),
+      lower : this.loc.y + (this.wdth / 2),
       left : this.loc.x,
       right : this.loc.x + this.lngth
 
     };
-    this.collectableCount = 0;
 
     //Type Of Platform#####
     //30% Seed, 0 - 0.3#####
@@ -44,7 +42,9 @@ class Platform{
 
     } else if (this.type > 0.7 && this.type <= 0.9){
       // console.log("TRAP");
-      this.entity = ["TRAP", new Seed(this.loc.x, this.loc.y - 30, 20, 20)];
+      this.img = loadImage("art/traps/t1.png");
+      this.entity = ["TRAP", new Seed(this.loc.x, this.loc.y - 60, 20, 40)];
+      this.trapGone = false;
 
     } else if (this.type > 0.9){
       // console.log("NONE");
@@ -83,7 +83,7 @@ class Platform{
         } else if (this.entity[0] === "HEART"){
           chickFiLost.player.health++;
 
-        } else if (this.entity[0] === "SEED"){
+        } else if (this.entity[0] === "SEED" || this.entity[0] === "TRAP"){
           chickFiLost.player.points++;
 
         }
@@ -156,6 +156,7 @@ class Platform{
         //Resets Player Jumps#####
         chickFiLost.player.jumpCount = 2;
 
+        if (this.trapGone === false) this.trapGone = true;
 
       }
 

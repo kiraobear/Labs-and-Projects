@@ -122,7 +122,7 @@ class Player{
 
     } else if (this.playerState === "HURT"){
       frameLength = this.playerSprites.hurt.length - 1;
-
+      
       if (this.direction === "LEFT"){
         //***** flips image if the direction is left*****
         scale(-1, 1);
@@ -176,7 +176,7 @@ class Player{
     this.limitHealth();
     this.applySpeedBoost();
     //Waits For DEAD Animation To Run#####
-    this.isDead = (this.health <= 0 && this.playerState !== "DEAD") ? true : false;
+    this.isDead = (this.health <= 0) ? true : false;
 
   }
 
@@ -223,17 +223,13 @@ class Player{
 
     }
 
-    if (this.health <= 0){
-      this.playerState = "DEAD";
-
-    } else if (this.oldHealth !== this.health){
+    if (this.oldHealth !== this.health){
       this.oldHealth = this.health;
       this.oldState = this.playerState;
       this.playerState = "HURT";
-      this.frameSpeed = 60;
+      this.frameSpeed = 120;
 
     }
-    let currentHealth = this.health;
 
     if (this.oldState !== this.playerState){
       this.frameCount = 0;

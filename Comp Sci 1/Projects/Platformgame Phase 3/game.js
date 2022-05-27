@@ -155,7 +155,8 @@ class Game{
     for (let i = this.platforms.length - 1; i >= 0; i--){
       this.platforms[i].update(i);
 
-      if (this.platforms[i].loc.x <= -this.platforms[i].lngth * 2){
+      if (this.platforms[i].loc.x <= -this.platforms[i].lngth * 2 ||
+        this.platforms[i].trapGone){
         this.platforms[i] = new Platform(2160 - this.platforms[i].lngth);
 
       }

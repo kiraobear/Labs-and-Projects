@@ -1,6 +1,5 @@
 //Start Class Enemy##########
 class Enemy{
-
   constructor(x, y, pL){
     this.enemySprites = this.loadFrames();
     this.pLoc = createVector(x, y);
@@ -82,40 +81,40 @@ class Enemy{
 
     if (this.offSetLoc.x >= this.pLngth ||
       this.offSetLoc.x <= 0){
-      this.vel.x = -this.vel.x;
-
-    }
-
-  }
-
-  updateBounds(){
-    this.bounds.right = this.eLoc.x - (this.lngth / 2);
-    this.bounds.left = this.eLoc.x + (this.lngth / 2);
-    this.bounds.top = this.eLoc.y - (this.wdth );
-    this.bounds.bottom = this.eLoc.y + (this.wdth / 2);
-  }
-
-  playerDetection(){
-    //Player Location and Bounds#####
-    let playerX = chickFiLost.player.loc.x;
-    let playerY = chickFiLost.player.loc.y;
-    let playerWdthBound = chickFiLost.player.wdth / 8;
-    let playerLngthBound = chickFiLost.player.lngth;
-
-    if (playerY + playerWdthBound >= this.bounds.top &&
-      playerY - playerWdthBound <= this.bounds.bottom &&
-      playerX + playerLngthBound >= this.bounds.left &&
-      playerX - playerLngthBound <= this.bounds.right){
-
-        if (chickFiLost.player.vel.y <= 0) chickFiLost.player.health--;
-
-        return true;
+        this.vel.x = -this.vel.x;
 
       }
 
-      return false;
-
     }
 
-  }
-  //End Class Enemy##########
+    updateBounds(){
+      this.bounds.right = this.eLoc.x - (this.lngth / 2);
+      this.bounds.left = this.eLoc.x + (this.lngth / 2);
+      this.bounds.top = this.eLoc.y - (this.wdth );
+      this.bounds.bottom = this.eLoc.y + (this.wdth / 2);
+    }
+
+    playerDetection(){
+      //Player Location and Bounds#####
+      let playerX = chickFiLost.player.loc.x;
+      let playerY = chickFiLost.player.loc.y;
+      let playerWdthBound = chickFiLost.player.wdth / 8;
+      let playerLngthBound = chickFiLost.player.lngth;
+
+      if (playerY + playerWdthBound >= this.bounds.top &&
+        playerY - playerWdthBound <= this.bounds.bottom &&
+        playerX + playerLngthBound >= this.bounds.left &&
+        playerX - playerLngthBound <= this.bounds.right){
+
+          if (chickFiLost.player.vel.y <= 0) chickFiLost.player.health--;
+
+          return true;
+
+        }
+
+        return false;
+
+      }
+
+    }
+    //End Class Enemy##########
