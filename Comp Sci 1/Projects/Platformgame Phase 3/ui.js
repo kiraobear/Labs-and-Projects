@@ -1,7 +1,8 @@
 //Start class Butt##########
 class Butt{
   constructor(x, y, l, w, typ){
-    this.img = this.loadImg(typ);
+    this.btnImg = this.loadImg(typ);
+    this.ropeImg = loadImage("art/titleScreens/intro/rope.png");
     this.loc = createVector(x, y);
     this.lngth = l;
     this.wdth = w;
@@ -25,8 +26,8 @@ class Butt{
     } else if (typ === "INSTRUCTIONS"){
       img = loadImage("art/titleScreens/intro/instructionsBtn.png");
 
-    } else if (typ === "SETTINGS"){
-      img = loadImage("art/titleScreens/intro/settingsBtn.png");
+    } else if (typ === "REPLAY"){
+      img = loadImage("art/titleScreens/outro/replayBtn.png");
 
     }
 
@@ -45,8 +46,16 @@ class Butt{
     push();
     imageMode(CENTER);
     tint(clr);
-    image(this.img, this.loc.x, this.loc.y, this.lngth, this.wdth);
+    image(this.btnImg, this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
+
+    if (chickFiLost.gameState === "INTRO"){
+      push();
+      imageMode(CENTER);
+      image(this.ropeImg, this.loc.x, this.loc.y - 45, this.lngth - 30, this.wdth);
+      pop();
+
+    }
 
   }
 

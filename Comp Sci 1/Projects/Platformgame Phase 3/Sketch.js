@@ -4,6 +4,13 @@
 
 let chickFiLost;
 
+let font;
+
+function preload(){
+  font = loadFont("verbum.otf");
+
+}
+
 function setup() {
   let cnv = createCanvas(900, 700);
   cnv.position((windowWidth - width) / 2, 30);
@@ -27,6 +34,12 @@ function keyPressed(){
 
   }
 
+  if (keyCode === 8 && chickFiLost.gameState === "INSTRUCTIONS" &&
+  chickFiLost.prevGameState === "INTRO" || chickFiLost.prevGameState === "OUTRO"){
+    chickFiLost.gameState = chickFiLost.prevGameState;
+
+  }
+
 }
 
 function mousePressed(){
@@ -36,12 +49,14 @@ function mousePressed(){
     chickFiLost.gameState = "PLAY";
 
   } else if (chickFiLost.butts.instructions.ratOverButt){
+    chickFiLost.prevGameState = chickFiLost.gameState;
     chickFiLost.butts.instructions.ratOverButt = false;
     chickFiLost.gameState = "INSTRUCTIONS";
 
-  } else if (chickFiLost.butts.settings.ratOverButt){
-    chickFiLost.butts.settings.ratOverButt = false;
-    chickFiLost.gameState = "SETTINGS";
+  } else if (chickFiLost.butts.replay.ratOverButt){
+    chickFiLost.butts.replay.ratOverButt = false;
+    chickFiLost.init(25, 5, true);
+    // chickFiLost.gameState = "PLAY";
 
   }
 

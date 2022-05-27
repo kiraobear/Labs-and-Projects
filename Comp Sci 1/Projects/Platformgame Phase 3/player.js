@@ -11,6 +11,8 @@ class Player{
     this.lngth = 59;
     this.wdth = 65;
     this.health = 3;
+    this.oldHealth = this.health;
+    this.maxHealth = 3;
     this.immobile = true;
     this.jumpCount = 0;
     //***** speed for platforms *****
@@ -19,6 +21,11 @@ class Player{
     this.speedBoostTimer = 0;
     //****** jump power for player *****
     this.jumpForce = 3.5;
+
+    this.heartImg = loadImage("art/collectables/r0.png");
+    //Seeds = Points#####
+    this.pointImg = loadImage("art/collectables/r1.png");
+    this.points = 0;
 
     //Becomes An Object Containing Each Separate Animation#####
     this.playerSprites = this.loadSprites();
@@ -81,7 +88,7 @@ class Player{
     //Current Frame Of Animation#####
     let currentFrame = floor(this.frameCount / this.frameSpeed);
 
-
+    //Player Rendering#####
     push();
     imageMode(CENTER);
     if (this.playerState === "JUMP"){
@@ -113,17 +120,52 @@ class Player{
 
       image(this.playerSprites.idle[currentFrame], this.loc.x, this.loc.y, this.lngth, this.wdth);
 
+    } else if (this.playerState === "HURT"){
+      frameLength = this.playerSprites.hurt.length - 1;
+
+      if (this.direction === "LEFT"){
+        //***** flips image if the direction is left*****
+        scale(-1, 1);
+        image(this.playerSprites.hurt[currentFrame], -this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
+
+      }
+
+      image(this.playerSprites.hurt[currentFrame], this.loc.x, this.loc.y, this.lngth / 1.6, this.wdth);
+
     }
     pop();
 
     //Reset Animation#####
     if (currentFrame >= frameLength){
       this.frameCount = 0;
-      //Exits Out Of JUMP State After JUMP Animation Is Over#####
-      if (this.playerState === "JUMP") this.playerState = "IDLE";
+      //Exits Out Of JUMP/HURT State After JUMP/HURT Animation Is Over#####
+      if (this.playerState === "JUMP" || this.playerState === "HURT") this.playerState = "IDLE";
 
     }
     this.frameCount++;
+
+    //Health Rendering#####
+    push();
+    imageMode(CENTER);
+    for (let i = 0; i < this.health; i++){
+      image(this.heartImg, ((i + 1) * 20), 15, 20, 20);
+    }
+    pop();
+
+    //Point Rendering#####
+    push();
+    imageMode(CENTER);
+    image(this.pointImg, 830, 20, 15, 25);
+    pop();
+
+    push();
+    textAlign(CENTER, CENTER);
+    textFont(font);
+    textSize(20);
+    fill(217, 128, 13);
+    noStroke();
+    text("X" + this.points, 865, 20);
+    pop();
 
   }
 
@@ -131,8 +173,10 @@ class Player{
     this.gravity();
     this.changeSprite();
     this.fallDamage();
+    this.limitHealth();
     this.applySpeedBoost();
-    this.isDead = (this.health <= 0) ? true : false;
+    //Waits For DEAD Animation To Run#####
+    this.isDead = (this.health <= 0 && this.playerState !== "DEAD") ? true : false;
 
   }
 
@@ -179,6 +223,18 @@ class Player{
 
     }
 
+    if (this.health <= 0){
+      this.playerState = "DEAD";
+
+    } else if (this.oldHealth !== this.health){
+      this.oldHealth = this.health;
+      this.oldState = this.playerState;
+      this.playerState = "HURT";
+      this.frameSpeed = 60;
+
+    }
+    let currentHealth = this.health;
+
     if (this.oldState !== this.playerState){
       this.frameCount = 0;
 
@@ -189,19 +245,28 @@ class Player{
   fallDamage(){
     if (this.loc.y >= height){
       //Just To Make Sure The Chick Is Dead##### :)
+
       this.health -= 100;
 
     }
 
   }
 
+  limitHealth(){
+    while (this.health > this.maxHealth){
+      this.health--;
+
+    }
+
+  }
+
   applySpeedBoost(){
-      this.speed = this.speedBoost
+    this.speed = this.speedBoost
 
-      if (this.speedBoostTimer-- <= 0){
-        this.speed = 2;
+    if (this.speedBoostTimer-- <= 0){
+      this.speed = 2;
 
-      }
+    }
 
   }
 
@@ -211,15 +276,18 @@ class Player{
       this.vel.y = -this.jumpForce;
 
       //Player Now Jumping#####
-      this.playerState = "JUMP";
-      //Dont Worry About The Wrong Order Here#####
-      //It Helps#####
-      this.oldState = this.playerState;
-      //Ensures The Full Animation Plays#####
-      //The Frame Restart In The changeSprite Function Above#####
-      //Wont Work For Jump Unless You Jump Both Times#####
-      this.frameCount = 0;
-      this.frameSpeed = 10;
+      if (this.playerState !== "HURT" || this.playerState !== "DEAD"){
+        this.playerState = "JUMP";
+        //Dont Worry About The Wrong Order Here#####
+        //It Helps#####
+        this.oldState = this.playerState;
+        //Ensures The Full Animation Plays#####
+        //The Frame Restart In The changeSprite Function Above#####
+        //Wont Work For Jump Unless You Jump Both Times#####
+        this.frameCount = 0;
+        this.frameSpeed = 10;
+
+      }
 
     }
 

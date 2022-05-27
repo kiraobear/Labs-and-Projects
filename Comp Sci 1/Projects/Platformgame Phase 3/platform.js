@@ -54,13 +54,6 @@ class Platform{
   }
 
   render(){
-    //platform dimension 156 x 40
-    // push();
-    // noStroke();
-    // fill(0, 0, 255);
-    // rect(this.loc.x, this.loc.y, this.lngth, this.wdth);
-    // pop();
-
     push();
     image(this.img, this.loc.x, this.loc.y, this.lngth, this.wdth);
     pop();
@@ -86,10 +79,23 @@ class Platform{
       if (this.entity[1].playerDetected) {
         if (this.entity[0] === "FEATHER"){
           chickFiLost.player.speedBoostTimer = 60;
-          
+
+        } else if (this.entity[0] === "HEART"){
+          chickFiLost.player.health++;
+
+        } else if (this.entity[0] === "SEED"){
+          chickFiLost.player.points++;
+
         }
 
-        this.entity = 0;
+        if (this.entity[0] === "ENEMY" && chickFiLost.player.vel.y > 0){
+          this.entity[0] = "HEART";
+          this.entity[1] = new Heart(this.loc.x, this.loc.y - 40, 20, 20);
+
+        } else {
+          this.entity = 0;
+
+        }
 
       }
 
@@ -156,4 +162,4 @@ class Platform{
     }
 
   }
-//End Class Platfrom##########
+  //End Class Platfrom##########

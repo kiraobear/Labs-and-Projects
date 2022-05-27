@@ -6,6 +6,7 @@
 class Collectable{
   constructor(x, y, l, w){
     this.loc = createVector(x, y);
+    this.vel = createVector(0, 0.1);
     this.lngth = l;
     this.wdth = w;
     //***** Collectable Bounds *****
@@ -17,6 +18,12 @@ class Collectable{
 
     };
 
+    this.bobLimit = {
+      top : this.loc.y - 3,
+      bottom : this.loc.y + 2
+
+    };
+
     this.playerDetected = false;
 
   }
@@ -25,6 +32,7 @@ class Collectable{
     //pX --> Platform X Location#####
     //pL --> Platform Length#####
     this.follow(pX, pL);
+    this.bob();
     this.updateBounds();
     this.playerDetected = this.playerDetection();
 
@@ -33,6 +41,17 @@ class Collectable{
   follow(pX, pL){
     //Centers Collectable To Center Of Parent Platform#####
     this.loc.x = pX + (pL / 2) - (this.lngth / 2);
+
+  }
+  bob(){
+    this.loc.add(this.vel);
+
+    if (this.loc.y >= this.bobLimit.bottom ||
+      this.loc.y <= this.bobLimit.top){
+
+      this.vel.y = -this.vel.y;
+
+    }
 
   }
 
@@ -56,7 +75,6 @@ class Collectable{
       playerX + playerLngthBound >= this.bounds.left &&
       playerX - playerLngthBound <= this.bounds.right){
 
-        console.log("DETECTED");
         return true;
 
       }
